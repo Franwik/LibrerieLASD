@@ -16,17 +16,17 @@ private:
 
 protected:
 
-  // ...
+  ulong size = 0;
 
   /* ************************************************************************ */
 
   // Default constructor
-  // Container() specifiers;
+  Container() = default;
 
 public:
 
   // Destructor
-  // ~Container() specifiers
+  ~Container() = default;
 
   /* ************************************************************************ */
 
@@ -46,9 +46,9 @@ public:
 
   // Specific member functions
 
-  // type Empty() specifiers; // (concrete function should not throw exceptions)
+  virtual bool Empty() const noexcept {return size == 0;} // (concrete function should not throw exceptions)
 
-  // type Size() specifiers; // (concrete function should not throw exceptions)
+  virtual ulong Size() const noexcept {return size;} // (concrete function should not throw exceptions)
 
 };
 
