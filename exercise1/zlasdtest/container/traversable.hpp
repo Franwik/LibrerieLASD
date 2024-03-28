@@ -9,7 +9,7 @@
 // TraversableContainer member functions!
 
 template <typename Data>
-void Traverse(uint & testnum, uint & testerr, const lasd::TraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
+void Traverse(unsigned long & testnum, unsigned long & testerr, const lasd::TraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -20,11 +20,11 @@ void Traverse(uint & testnum, uint & testerr, const lasd::TraversableContainer<D
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data, typename Value>
-void Fold(uint & testnum, uint & testerr, const lasd::TraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
+void Fold(unsigned long & testnum, unsigned long & testerr, const lasd::TraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
   bool tst;
   testnum++;
   try {
@@ -36,7 +36,7 @@ void Fold(uint & testnum, uint & testerr, const lasd::TraversableContainer<Data>
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data>
@@ -63,7 +63,7 @@ std::string FoldStringConcatenate(const std::string &, const std::string &);
 // PreOrderTraversableContainer member functions!
 
 template <typename Data>
-void TraversePreOrder(uint & testnum, uint & testerr, const lasd::PreOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
+void TraversePreOrder(unsigned long & testnum, unsigned long & testerr, const lasd::PreOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -74,11 +74,11 @@ void TraversePreOrder(uint & testnum, uint & testerr, const lasd::PreOrderTraver
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data, typename Value>
-void FoldPreOrder(uint & testnum, uint & testerr, const lasd::PreOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
+void FoldPreOrder(unsigned long & testnum, unsigned long & testerr, const lasd::PreOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
   bool tst;
   testnum++;
   try {
@@ -90,7 +90,7 @@ void FoldPreOrder(uint & testnum, uint & testerr, const lasd::PreOrderTraversabl
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -98,7 +98,7 @@ void FoldPreOrder(uint & testnum, uint & testerr, const lasd::PreOrderTraversabl
 // PostOrderTraversableContainer member functions!
 
 template <typename Data>
-void TraversePostOrder(uint & testnum, uint & testerr, const lasd::PostOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
+void TraversePostOrder(unsigned long & testnum, unsigned long & testerr, const lasd::PostOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -109,11 +109,11 @@ void TraversePostOrder(uint & testnum, uint & testerr, const lasd::PostOrderTrav
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data, typename Value>
-void FoldPostOrder(uint & testnum, uint & testerr, const lasd::PostOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
+void FoldPostOrder(unsigned long & testnum, unsigned long & testerr, const lasd::PostOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
   bool tst;
   testnum++;
   try {
@@ -125,7 +125,7 @@ void FoldPostOrder(uint & testnum, uint & testerr, const lasd::PostOrderTraversa
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -133,7 +133,7 @@ void FoldPostOrder(uint & testnum, uint & testerr, const lasd::PostOrderTraversa
 // InOrderTraversableContainer member functions!
 
 template <typename Data>
-void TraverseInOrder(uint & testnum, uint & testerr, const lasd::InOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
+void TraverseInOrder(unsigned long & testnum, unsigned long & testerr, const lasd::InOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -144,11 +144,11 @@ void TraverseInOrder(uint & testnum, uint & testerr, const lasd::InOrderTraversa
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data, typename Value>
-void FoldInOrder(uint & testnum, uint & testerr, const lasd::InOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
+void FoldInOrder(unsigned long & testnum, unsigned long & testerr, const lasd::InOrderTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
   bool tst;
   testnum++;
   try {
@@ -160,7 +160,7 @@ void FoldInOrder(uint & testnum, uint & testerr, const lasd::InOrderTraversableC
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -168,7 +168,7 @@ void FoldInOrder(uint & testnum, uint & testerr, const lasd::InOrderTraversableC
 // BreadthTraversableContainer member functions!
 
 template <typename Data>
-void TraverseBreadth(uint & testnum, uint & testerr, const lasd::BreadthTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
+void TraverseBreadth(unsigned long & testnum, unsigned long & testerr, const lasd::BreadthTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::TraverseFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -179,11 +179,11 @@ void TraverseBreadth(uint & testnum, uint & testerr, const lasd::BreadthTraversa
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data, typename Value>
-void FoldBreadth(uint & testnum, uint & testerr, const lasd::BreadthTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
+void FoldBreadth(unsigned long & testnum, unsigned long & testerr, const lasd::BreadthTraversableContainer<Data> & con, bool chk, typename lasd::TraversableContainer<Data>::FoldFun<Value> fun, const Value & inival, const Value & finval) {
   bool tst;
   testnum++;
   try {
@@ -195,7 +195,7 @@ void FoldBreadth(uint & testnum, uint & testerr, const lasd::BreadthTraversableC
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */

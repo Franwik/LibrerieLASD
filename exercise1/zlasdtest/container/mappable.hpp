@@ -9,7 +9,7 @@
 // MappableContainer member functions!
 
 template <typename Data>
-void Map(uint & testnum, uint & testerr, lasd::MappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
+void Map(unsigned long & testnum, unsigned long & testerr, lasd::MappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -20,7 +20,7 @@ void Map(uint & testnum, uint & testerr, lasd::MappableContainer<Data> & con, bo
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 template <typename Data>
@@ -77,7 +77,7 @@ void MapStringNonEmptyAppend(std::string &, const std::string &);
 // PreOrderMappableContainer member functions!
 
 template <typename Data>
-void MapPreOrder(uint & testnum, uint & testerr, lasd::PreOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
+void MapPreOrder(unsigned long & testnum, unsigned long & testerr, lasd::PreOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -88,7 +88,7 @@ void MapPreOrder(uint & testnum, uint & testerr, lasd::PreOrderMappableContainer
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -96,7 +96,7 @@ void MapPreOrder(uint & testnum, uint & testerr, lasd::PreOrderMappableContainer
 // PostOrderMappableContainer member functions!
 
 template <typename Data>
-void MapPostOrder(uint & testnum, uint & testerr, lasd::PostOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
+void MapPostOrder(unsigned long & testnum, unsigned long & testerr, lasd::PostOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -107,7 +107,7 @@ void MapPostOrder(uint & testnum, uint & testerr, lasd::PostOrderMappableContain
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -115,7 +115,7 @@ void MapPostOrder(uint & testnum, uint & testerr, lasd::PostOrderMappableContain
 // InOrderMappableContainer member functions!
 
 template <typename Data>
-void MapInOrder(uint & testnum, uint & testerr, lasd::InOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
+void MapInOrder(unsigned long & testnum, unsigned long & testerr, lasd::InOrderMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -126,7 +126,7 @@ void MapInOrder(uint & testnum, uint & testerr, lasd::InOrderMappableContainer<D
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */
@@ -134,7 +134,7 @@ void MapInOrder(uint & testnum, uint & testerr, lasd::InOrderMappableContainer<D
 // BreadthMappableContainer member functions!
 
 template <typename Data>
-void MapBreadth(uint & testnum, uint & testerr, lasd::BreadthMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
+void MapBreadth(unsigned long & testnum, unsigned long & testerr, lasd::BreadthMappableContainer<Data> & con, bool chk, typename lasd::MappableContainer<Data>::MapFun fun) {
   bool tst = true;
   testnum++;
   try {
@@ -145,7 +145,7 @@ void MapBreadth(uint & testnum, uint & testerr, lasd::BreadthMappableContainer<D
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (uint) tst);
+  testerr += (1 - (unsigned long) tst);
 }
 
 /* ************************************************************************** */

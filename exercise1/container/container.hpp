@@ -16,7 +16,7 @@ private:
 
 protected:
 
-  ulong size = 0;
+  unsigned long size = 0;
 
   /* ************************************************************************ */
 
@@ -48,7 +48,7 @@ public:
 
   virtual bool Empty() const noexcept {return size == 0;} // (concrete function should not throw exceptions)
 
-  virtual ulong Size() const noexcept {return size;} // (concrete function should not throw exceptions)
+  virtual unsigned long Size() const noexcept {return size;} // (concrete function should not throw exceptions)
 
 };
 

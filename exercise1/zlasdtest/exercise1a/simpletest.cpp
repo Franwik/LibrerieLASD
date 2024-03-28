@@ -21,8 +21,8 @@ using namespace std;
 /* ************************************************************************** */
 
 // TODO: Uncomment after Vector implements
-// void stestVectorInt(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorInt(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector<int> Test:" << endl;
 //   try {
 //     {
@@ -82,8 +82,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVectorDouble(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorDouble(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector<double> Test:" << endl;
 //   try {
 //     lasd::SortableVector<double> vec(3);
@@ -111,8 +111,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVectorString(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorString(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector<string> Test:" << endl;
 //   try {
 //     lasd::SortableVector<string> vec(2);
@@ -163,8 +163,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVector(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVector(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   stestVectorInt(loctestnum, loctesterr);
 //   stestVectorDouble(loctestnum, loctesterr);
 //   stestVectorString(loctestnum, loctesterr);
@@ -176,8 +176,8 @@ using namespace std;
 /* ************************************************************************** */
 
 // TODO: Uncomment after List implementation
-// void stestListInt(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestListInt(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of List<int> Test:" << endl;
 //   try {
 //     lasd::List<int> lst;
@@ -262,8 +262,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestListDouble(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestListDouble(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of List<double> Test:" << endl;
 //   try {
 //     lasd::List<double> lst;
@@ -299,8 +299,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestListString(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestListString(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of List<string> Test:" << endl;
 //   try {
 //     lasd::List<string> lst;
@@ -345,8 +345,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestList(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestList(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   stestListInt(loctestnum, loctesterr);
 //   stestListDouble(loctestnum, loctesterr);
 //   stestListString(loctestnum, loctesterr);
@@ -358,8 +358,8 @@ using namespace std;
 /* ************************************************************************** */
 
 // TODO: Uncomment code after crossed Vector-List implementation
-// void stestVectorListInt(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorListInt(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector/List<int> Test:" << endl;
 //   try {
 //     lasd::SortableVector<int> vec(3);
@@ -391,8 +391,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVectorListDouble(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorListDouble(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector/List<double> Test:" << endl;
 //   try {
 //     lasd::SortableVector<double> vec(3);
@@ -424,8 +424,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVectorListString(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorListString(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector/List<string> Test:" << endl;
 //   try {
 //     lasd::SortableVector<string> vec(3);
@@ -465,8 +465,8 @@ using namespace std;
 //   testerr += loctesterr;
 // }
 
-// void stestVectorList(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
+// void stestVectorList(unsigned long & testnum, unsigned long & testerr) {
+//   unsigned long loctestnum = 0, loctesterr = 0;
 //   stestVectorListInt(loctestnum, loctesterr);
 //   stestVectorListDouble(loctestnum, loctesterr);
 //   stestVectorListString(loctestnum, loctesterr);
@@ -477,7 +477,7 @@ using namespace std;
 
 /* ************************************************************************** */
 
-void testSimpleExercise1A(uint & testnum, uint & testerr) {
+void testSimpleExercise1A(unsigned long & testnum, unsigned long & testerr) {
   // TODO: Uncomment to test Vector
   // stestVector(testnum, testerr);
   // TODO: Uncomment to test List
