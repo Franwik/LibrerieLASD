@@ -13,7 +13,7 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class TestableContainer {
+class TestableContainer : virtual public Container{
   // Must extend Container
 
 private:
@@ -22,32 +22,32 @@ private:
 
 protected:
 
-  // ...
+  // TODO: Create Constructors
 
 public:
 
   // Destructor
-  // ~TestableContainer() specifiers
+  ~TestableContainer() = default;
 
   /* ************************************************************************ */
 
   // Copy assignment
-  // type operator=(argument); // Copy assignment of abstract types is not possible.
+  virtual TestableContainer &operator=(const TestableContainer &) noexcept = 0; // Copy assignment of abstract types is not possible.
 
   // Move assignment
-  // type operator=(argument); // Move assignment of abstract types is not possible.
+  virtual TestableContainer &operator=(TestableContainer &&) noexcept = 0; // Move assignment of abstract types is not possible.
 
   /* ************************************************************************ */
 
   // Comparison operators
-  // type operator==(argument) specifiers; // Comparison of abstract types is not possible.
-  // type operator!=(argument) specifiers; // Comparison of abstract types is not possible.
+  virtual bool operator==(const TestableContainer &) const noexcept = 0; // Comparison of abstract types is not possible.
+  virtual bool operator!=(const TestableContainer &) const noexcept = 0; // Comparison of abstract types is not possible.
 
   /* ************************************************************************ */
 
   // Specific member function
 
-  // type Exists(argument) specifiers; // (concrete function should not throw exceptions)
+  virtual bool Exists(const Data &) const noexcept = 0; // (concrete function should not throw exceptions)
 
 };
 
