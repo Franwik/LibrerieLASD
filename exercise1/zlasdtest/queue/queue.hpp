@@ -7,7 +7,7 @@
 /* ************************************************************************** */
 
 template <typename Data>
-void Head(unsigned long & testnum, unsigned long & testerr, const lasd::Queue<Data> & que, bool chk, const Data & val) {
+void Head(uint & testnum, uint & testerr, const lasd::Queue<Data> & que, bool chk, const Data & val) {
   testnum++;
   bool tst;
   try {
@@ -21,11 +21,11 @@ void Head(unsigned long & testnum, unsigned long & testerr, const lasd::Queue<Da
     tst = false;
     std::cout << std::endl << "Wrong exception: " << exc.what() << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Data>
-void Head(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & que, bool chk, const Data & val) {
+void Head(uint & testnum, uint & testerr, lasd::Queue<Data> & que, bool chk, const Data & val) {
   testnum++;
   bool tst;
   try {
@@ -39,11 +39,11 @@ void Head(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & 
     tst = false;
     std::cout << std::endl << "Wrong exception: " << exc.what() << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Data>
-void Dequeue(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & que, bool chk) {
+void Dequeue(uint & testnum, uint & testerr, lasd::Queue<Data> & que, bool chk) {
   testnum++;
   bool tst = true;
   try {
@@ -58,11 +58,11 @@ void Dequeue(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data>
     tst = false;
     std::cout << std::endl << "Wrong exception: " << exc.what() << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Data>
-void HeadNDequeue(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & que, bool chk, const Data & val) {
+void HeadNDequeue(uint & testnum, uint & testerr, lasd::Queue<Data> & que, bool chk, const Data & val) {
   testnum++;
   bool tst;
   try {
@@ -76,11 +76,11 @@ void HeadNDequeue(unsigned long & testnum, unsigned long & testerr, lasd::Queue<
     tst = false;
     std::cout << std::endl << "Wrong exception: " << exc.what() << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Data>
-void EnqueueC(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & que, const Data & val) {
+void EnqueueC(uint & testnum, uint & testerr, lasd::Queue<Data> & que, const Data & val) {
   testnum++;
   bool tst = true;
   try {
@@ -92,11 +92,11 @@ void EnqueueC(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data
     std::cout << "\"" << exc.what() << "\": " << "Error!" << std::endl;
     tst = false;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Data>
-void EnqueueM(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data> & que, Data val) {
+void EnqueueM(uint & testnum, uint & testerr, lasd::Queue<Data> & que, Data val) {
   testnum++;
   bool tst = true;
   try {
@@ -108,11 +108,11 @@ void EnqueueM(unsigned long & testnum, unsigned long & testerr, lasd::Queue<Data
     std::cout << "\"" << exc.what() << "\": " << "Error!" << std::endl;
     tst = false;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Que>
-void EqualQueue(unsigned long & testnum, unsigned long & testerr, const Que & que1, const Que & que2, bool chk) {
+void EqualQueue(uint & testnum, uint & testerr, const Que & que1, const Que & que2, bool chk) {
   testnum++;
   bool tst;
   try {
@@ -122,11 +122,11 @@ void EqualQueue(unsigned long & testnum, unsigned long & testerr, const Que & qu
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 template <typename Que>
-void NonEqualQueue(unsigned long & testnum, unsigned long & testerr, const Que & que1, const Que & que2, bool chk) {
+void NonEqualQueue(uint & testnum, uint & testerr, const Que & que1, const Que & que2, bool chk) {
   testnum++;
   bool tst;
   try {
@@ -136,7 +136,7 @@ void NonEqualQueue(unsigned long & testnum, unsigned long & testerr, const Que &
   catch (std::exception & exc) {
     std::cout << "\"" << exc.what() << "\": " << ((tst = !chk) ? "Correct" : "Error") << "!" << std::endl;
   }
-  testerr += (1 - (unsigned long) tst);
+  testerr += (1 - (uint) tst);
 }
 
 /* ************************************************************************** */
