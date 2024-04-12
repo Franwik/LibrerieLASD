@@ -20,162 +20,160 @@ using namespace std;
 
 /* ************************************************************************** */
 
-// TODO: Uncomment after Vector implements
-// void stestVectorInt(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
-//   cout << endl << "Begin of Vector<int> Test:" << endl;
-//   try {
-//     {
-//       lasd::SortableVector<int> vec;
-//       Empty(loctestnum, loctesterr, vec, true);
+void stestVectorInt(uint & testnum, uint & testerr) {
+  uint loctestnum = 0, loctesterr = 0;
+  cout << endl << "Begin of Vector<int> Test:" << endl;
+  try {
+    {
+      lasd::SortableVector<int> vec;
+      Empty(loctestnum, loctesterr, vec, true);
 
-//       GetFront(loctestnum, loctesterr, vec, false, 0);
-//       GetBack(loctestnum, loctesterr, vec, false, 0);
-//       SetAt(loctestnum, loctesterr, vec, false, 1, 0);
-//       GetAt(loctestnum, loctesterr, vec, false, 2, 0);
+      GetFront(loctestnum, loctesterr, vec, false, 0);
+      GetBack(loctestnum, loctesterr, vec, false, 0);
+      SetAt(loctestnum, loctesterr, vec, false, 1, 0);
+      GetAt(loctestnum, loctesterr, vec, false, 2, 0);
 
-//       Exists(loctestnum, loctesterr, vec, false, 0);
+      Exists(loctestnum, loctesterr, vec, false, 0);
 
-//       TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
-//       TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
 
-//       FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 0);
-//       FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 0);
-//     }
-//     {
-//       lasd::SortableVector<int> vec(3);
-//       Empty(loctestnum, loctesterr, vec, false);
-//       Size(loctestnum, loctesterr, vec, true, 3);
+      FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 0);
+      FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 0);
+    }
+    {
+      lasd::SortableVector<int> vec(3);
+      Empty(loctestnum, loctesterr, vec, false);
+      Size(loctestnum, loctesterr, vec, true, 3);
 
-//       SetAt(loctestnum, loctesterr, vec, true, 0, 4);
-//       SetAt(loctestnum, loctesterr, vec, true, 1, 3);
-//       SetAt(loctestnum, loctesterr, vec, true, 2, 1);
+      SetAt(loctestnum, loctesterr, vec, true, 0, 4);
+      SetAt(loctestnum, loctesterr, vec, true, 1, 3);
+      SetAt(loctestnum, loctesterr, vec, true, 2, 1);
 
-//       GetFront(loctestnum, loctesterr, vec, true, 4);
-//       GetBack(loctestnum, loctesterr, vec, true, 1);
+      GetFront(loctestnum, loctesterr, vec, true, 4);
+      GetBack(loctestnum, loctesterr, vec, true, 1);
 
-//       SetFront(loctestnum, loctesterr, vec, true, 5);
-//       SetBack(loctestnum, loctesterr, vec, true, 4);
+      SetFront(loctestnum, loctesterr, vec, true, 5);
+      SetBack(loctestnum, loctesterr, vec, true, 4);
 
-//       Exists(loctestnum, loctesterr, vec, true, 4);
+      Exists(loctestnum, loctesterr, vec, true, 4);
 
-//       TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
-//       TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
-//       FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 12);
-//       FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<int>, 1, 60);
+      TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 12);
+      FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<int>, 1, 60);
 
-//       vec.Sort();
+      vec.Sort();
 
-//       TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
-//       TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
+      TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
 
-//       vec.Resize(2);
-//       FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<int>, 1, 12);
-//     }
-//   }
-//   catch (...) {
-//     loctestnum++; loctesterr++;
-//     cout << endl << "Unmanaged error! " << endl;
-//   }
-//   cout << "End of Vector<int> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
-//   testnum += loctestnum;
-//   testerr += loctesterr;
-// }
+      vec.Resize(2);
+      FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<int>, 1, 12);
+    }
+  }
+  catch (...) {
+    loctestnum++; loctesterr++;
+    cout << endl << "Unmanaged error! " << endl;
+  }
+  cout << "End of Vector<int> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
+  testnum += loctestnum;
+  testerr += loctesterr;
+}
 
-// void stestVectorDouble(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
-//   cout << endl << "Begin of Vector<double> Test:" << endl;
-//   try {
-//     lasd::SortableVector<double> vec(3);
-//     Empty(loctestnum, loctesterr, vec, false);
-//     Size(loctestnum, loctesterr, vec, true, 3);
+void stestVectorDouble(uint & testnum, uint & testerr) {
+  uint loctestnum = 0, loctesterr = 0;
+  cout << endl << "Begin of Vector<double> Test:" << endl;
+  try {
+    lasd::SortableVector<double> vec(3);
+    Empty(loctestnum, loctesterr, vec, false);
+    Size(loctestnum, loctesterr, vec, true, 3);
 
-//     SetAt(loctestnum, loctesterr, vec, true, 0, 5.5);
-//     SetAt(loctestnum, loctesterr, vec, true, 1, 3.3);
-//     SetAt(loctestnum, loctesterr, vec, true, 2, 1.1);
+    SetAt(loctestnum, loctesterr, vec, true, 0, 5.5);
+    SetAt(loctestnum, loctesterr, vec, true, 1, 3.3);
+    SetAt(loctestnum, loctesterr, vec, true, 2, 1.1);
 
-//     GetFront(loctestnum, loctesterr, vec, true, 5.5);
-//     GetBack(loctestnum, loctesterr, vec, true, 1.1);
+    GetFront(loctestnum, loctesterr, vec, true, 5.5);
+    GetBack(loctestnum, loctesterr, vec, true, 1.1);
 
-//     Exists(loctestnum, loctesterr, vec, true, 3.3);
+    Exists(loctestnum, loctesterr, vec, true, 3.3);
 
-//     FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<double>, 0.0, 9.9);
-//     FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<double>, 1.0, 19.965);
-//   }
-//   catch (...) {
-//     loctestnum++; loctesterr++;
-//     cout << endl << "Unmanaged error! " << endl;
-//   }
-//   cout << "End of Vector<double> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
-//   testnum += loctestnum;
-//   testerr += loctesterr;
-// }
+    FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<double>, 0.0, 9.9);
+    FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldMultiply<double>, 1.0, 19.965);
+  }
+  catch (...) {
+    loctestnum++; loctesterr++;
+    cout << endl << "Unmanaged error! " << endl;
+  }
+  cout << "End of Vector<double> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
+  testnum += loctestnum;
+  testerr += loctesterr;
+}
 
-// void stestVectorString(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
-//   cout << endl << "Begin of Vector<string> Test:" << endl;
-//   try {
-//     lasd::SortableVector<string> vec(2);
+void stestVectorString(uint & testnum, uint & testerr) {
+  uint loctestnum = 0, loctesterr = 0;
+  cout << endl << "Begin of Vector<string> Test:" << endl;
+  try {
+    lasd::SortableVector<string> vec(2);
 
-//     Empty(loctestnum, loctesterr, vec, false);
-//     Size(loctestnum, loctesterr, vec, true, 2);
+    Empty(loctestnum, loctesterr, vec, false);
+    Size(loctestnum, loctesterr, vec, true, 2);
 
-//     SetAt(loctestnum, loctesterr, vec, true, 0, string("A"));
-//     SetAt(loctestnum, loctesterr, vec, true, 1, string("B"));
+    SetAt(loctestnum, loctesterr, vec, true, 0, string("A"));
+    SetAt(loctestnum, loctesterr, vec, true, 1, string("B"));
 
-//     GetFront(loctestnum, loctesterr, vec, true, string("A"));
-//     GetBack(loctestnum, loctesterr, vec, true, string("B"));
+    GetFront(loctestnum, loctesterr, vec, true, string("A"));
+    GetBack(loctestnum, loctesterr, vec, true, string("B"));
 
-//     Exists(loctestnum, loctesterr, vec, true, string("A"));
+    Exists(loctestnum, loctesterr, vec, true, string("A"));
 
-//     MapPreOrder(loctestnum, loctesterr, vec, true, [](string & str) { MapStringAppend(str, string(" ")); });
-//     TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<string>);
-//     FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldStringConcatenate, string("X"), string("XA B "));
-//     FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldStringConcatenate, string("X"), string("XB A "));
+    MapPreOrder(loctestnum, loctesterr, vec, true, [](string & str) { MapStringAppend(str, string(" ")); });
+    TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<string>);
+    FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldStringConcatenate, string("X"), string("XA B "));
+    FoldPostOrder(loctestnum, loctesterr, vec, true, &FoldStringConcatenate, string("X"), string("XB A "));
 
-//     Exists(loctestnum, loctesterr, vec, false, string("A"));
+    Exists(loctestnum, loctesterr, vec, false, string("A"));
 
-//     lasd::SortableVector<string> copvec(vec);
-//     EqualVector(loctestnum, loctesterr, vec, copvec, true);
-//     MapPreOrder(loctestnum, loctesterr, vec, true, [](string & str) { MapStringAppend(str, string("!")); });
-//     NonEqualVector(loctestnum, loctesterr, vec, copvec, true);
+    lasd::SortableVector<string> copvec(vec);
+    EqualVector(loctestnum, loctesterr, vec, copvec, true);
+    MapPreOrder(loctestnum, loctesterr, vec, true, [](string & str) { MapStringAppend(str, string("!")); });
+    NonEqualVector(loctestnum, loctesterr, vec, copvec, true);
 
-//     copvec = move(vec);
-//     FoldPreOrder(loctestnum, loctesterr, copvec, true, &FoldStringConcatenate, string("?"), string("?A !B !"));
+    copvec = move(vec);
+    FoldPreOrder(loctestnum, loctesterr, copvec, true, &FoldStringConcatenate, string("?"), string("?A !B !"));
 
-//     lasd::SortableVector<string> movvec(move(vec));
-//     FoldPreOrder(loctestnum, loctesterr, movvec, true, &FoldStringConcatenate, string("?"), string("?A B "));
-//     movvec.Sort();
-//     FoldPreOrder(loctestnum, loctesterr, movvec, true, &FoldStringConcatenate, string("?"), string("?A B "));
-//     SetAt(loctestnum, loctesterr, vec, false, 1, string(""));
-//     vec.Resize(1);
-//     SetAt(loctestnum, loctesterr, vec, true, 0, string("X"));
+    lasd::SortableVector<string> movvec(move(vec));
+    FoldPreOrder(loctestnum, loctesterr, movvec, true, &FoldStringConcatenate, string("?"), string("?A B "));
+    movvec.Sort();
+    FoldPreOrder(loctestnum, loctesterr, movvec, true, &FoldStringConcatenate, string("?"), string("?A B "));
+    SetAt(loctestnum, loctesterr, vec, false, 1, string(""));
+    vec.Resize(1);
+    SetAt(loctestnum, loctesterr, vec, true, 0, string("X"));
 
-//     movvec.Clear();
-//     Empty(loctestnum, loctesterr, movvec, true);
-//   }
-//   catch (...) {
-//     loctestnum++; loctesterr++;
-//     cout << endl << "Unmanaged error! " << endl;
-//   }
-//   cout << "End of Vector<string> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
-//   testnum += loctestnum;
-//   testerr += loctesterr;
-// }
+    movvec.Clear();
+    Empty(loctestnum, loctesterr, movvec, true);
+  }
+  catch (...) {
+    loctestnum++; loctesterr++;
+    cout << endl << "Unmanaged error! " << endl;
+  }
+  cout << "End of Vector<string> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
+  testnum += loctestnum;
+  testerr += loctesterr;
+}
 
-// void stestVector(uint & testnum, uint & testerr) {
-//   uint loctestnum = 0, loctesterr = 0;
-//   stestVectorInt(loctestnum, loctesterr);
-//   stestVectorDouble(loctestnum, loctesterr);
-//   stestVectorString(loctestnum, loctesterr);
-//   testnum += loctestnum;
-//   testerr += loctesterr;
-//   cout << endl << "Exercise 1A - Vector (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
-// }
+void stestVector(uint & testnum, uint & testerr) {
+  uint loctestnum = 0, loctesterr = 0;
+  stestVectorInt(loctestnum, loctesterr);
+  stestVectorDouble(loctestnum, loctesterr);
+  stestVectorString(loctestnum, loctesterr);
+  testnum += loctestnum;
+  testerr += loctesterr;
+  cout << endl << "Exercise 1A - Vector (Errors/Tests: " << loctesterr << "/" << loctestnum << ")" << endl;
+}
 
 /* ************************************************************************** */
 
-// TODO: Uncomment after List implementation
 // void stestListInt(uint & testnum, uint & testerr) {
 //   uint loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of List<int> Test:" << endl;
@@ -357,7 +355,6 @@ using namespace std;
 
 /* ************************************************************************** */
 
-// TODO: Uncomment code after crossed Vector-List implementation
 // void stestVectorListInt(uint & testnum, uint & testerr) {
 //   uint loctestnum = 0, loctesterr = 0;
 //   cout << endl << "Begin of Vector/List<int> Test:" << endl;
@@ -484,11 +481,8 @@ using namespace std;
 /* ************************************************************************** */
 
 void testSimpleExercise1A(uint & testnum, uint & testerr) {
-  // TODO: Uncomment to test Vector
-  // stestVector(testnum, testerr);
-  // TODO: Uncomment to test Vector
+  stestVector(testnum, testerr);
   // stestList(testnum, testerr);
-  // TODO: Uncomment to test Vector-List
   // stestVectorList(testnum, testerr);
   cout << endl << "Exercise 1A (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")" << endl;
 }
