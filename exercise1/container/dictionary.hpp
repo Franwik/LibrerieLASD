@@ -24,7 +24,7 @@ protected:
 
 public:
   // Destructor
-  ~DictionaryContainer() = default;
+  virtual ~DictionaryContainer() = default;
 
   /* ************************************************************************ */
 
@@ -37,15 +37,15 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const TraversableContainer &) const noexcept = delete;
-  bool operator!=(const TraversableContainer &) const noexcept = delete;
+  bool operator==(const DictionaryContainer &) const noexcept = delete;
+  bool operator!=(const DictionaryContainer &) const noexcept = delete;
 
   /* ************************************************************************ */
 
   // Specific member functions
 
-  virtual bool Insert(const Data &) noexcept = 0; // Copy of the value
-  virtual bool Insert(Data &&) noexcept = 0;      // Move of the value
+  virtual bool Insert(const Data &) noexcept = 0;
+  virtual bool Insert(Data &&) noexcept = 0;
   virtual bool Remove(Data &&) noexcept = 0;
 
   bool InsertAll(const TraversableContainer<Data> &TraversableC) noexcept;

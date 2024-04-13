@@ -28,7 +28,7 @@ protected:
 
 public:
   // Destructor
-  ~MappableContainer() = 0;
+  virtual ~MappableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -68,7 +68,7 @@ protected:
 
 public:
   // Destructor
-  ~PreOrderMappableContainer() = default;
+  virtual ~PreOrderMappableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -96,7 +96,7 @@ public:
 
   // Specific member function (inherited from MappableContainer)
 
-  inline void Map(MapFun) { PreOrderMap(MapFun); }
+  inline void Map(const MapFun fun) { PreOrderMap(fun); }
 };
 
 /* ************************************************************************** */
@@ -114,7 +114,7 @@ protected:
 
 public:
   // Destructor
-  ~PostOrderMappableContainer() = default;
+  virtual ~PostOrderMappableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -142,7 +142,7 @@ public:
 
   // Specific member function (inherited from MappableContainer)
 
-  inline void Map(MapFun) { PreOrderMap(MapFun); }
+  inline void Map(const MapFun fun) { PostOrderMap(fun); }
 };
 
 /* ************************************************************************** */

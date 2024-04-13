@@ -23,7 +23,7 @@ protected:
 
 public:
   // Destructor
-  ~Container() = default;
+  virtual ~Container() = default;
 
   /* ************************************************************************ */
 
@@ -59,7 +59,7 @@ private:
 protected:
 public:
   // Destructor
-  ~ClearableContainer() = default;
+  virtual ~ClearableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -79,7 +79,7 @@ public:
 
   // Specific member functions
 
-  virtual void Clear() noexcept = 0;
+  virtual void Clear() = 0;
 };
 
 /* ************************************************************************** */
@@ -93,7 +93,7 @@ private:
 protected:
 public:
   // Destructor
-  ~ResizableContainer() = default;
+  virtual ~ResizableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -113,13 +113,13 @@ public:
 
   // Specific member functions
 
-  virtual void Resize(unsigned long size) noexcept = 0;
+  virtual void Resize(unsigned long size) = 0;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from ClearableContainer)
 
-  virtual void Clear() noexcept override { Resize(0); }
+  virtual void Clear() override { Resize(0); }
 };
 
 /* ************************************************************************** */

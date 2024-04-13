@@ -20,11 +20,11 @@ private:
   // ...
 
 protected:
-  // ...
+  using Container::size;
 
 public:
   // Destructor
-  ~LinearContainer() = default;
+  virtual ~LinearContainer() = default;
 
   /* ************************************************************************ */
 
@@ -59,7 +59,7 @@ public:
 
   using typename TraversableContainer<Data>::TraverseFun;
 
-  inline void Traverse(TraverseFun fun) const override{PreOrderTraverse(fun)};
+  inline void Traverse(TraverseFun fun) const override { PreOrderTraverse(fun); }
 
   /* ************************************************************************ */
 
@@ -79,7 +79,7 @@ public:
 
   using typename MappableContainer<Data>::MapFun;
 
-  void Map(MapFun fun) override{PreOrderMap(fun)};
+  void Map(MapFun fun) override { PreOrderMap(fun); }
 
   /* ************************************************************************ */
 
@@ -104,11 +104,11 @@ private:
   // ...
 
 protected:
-  // ...
+  using Container::size;
 
 public:
   // Destructor
-  ~SortableLinearContainer() = default;
+  virtual ~SortableLinearContainer() = default;
 
   /* ************************************************************************ */
 
@@ -128,7 +128,7 @@ public:
 
   // Specific member function
 
-  inline virtual void Sort() noexcept {quickSort(this)};
+  inline virtual void Sort() noexcept { quickSort(0, size-1); }
 
 protected:
   // Auxiliary member functions

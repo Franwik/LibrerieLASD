@@ -12,7 +12,7 @@ template <typename Accumulator>
 inline Accumulator TraversableContainer<Data>::Fold(FoldFun<Accumulator> func,
                                                     Accumulator acc) const {
 
-  Traverse([const & func, &acc](const Data &CurrData) { acc = func(CurrData, acc); });
+  Traverse([func, &acc](const Data &CurrData) { acc = func(CurrData, acc); });
 
   return acc;
 }
@@ -24,7 +24,7 @@ bool TraversableContainer<Data>::Exists(const Data &data) const noexcept {
 
   bool found = false;
 
-  Traverse([const & data, &found](const Data &CurrData) -> void {
+  Traverse([data, &found](const Data &CurrData) -> void {
     found |= (CurrData == data);
   });
 

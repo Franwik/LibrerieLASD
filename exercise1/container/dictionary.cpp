@@ -20,9 +20,8 @@ template <typename Data>
 bool DictionaryContainer<Data>::InsertAll(MappableContainer<Data> &&MappableC) noexcept {
   bool all = true;
 
-  MappableC.Map([&all, this](const Data &CurrData) {
-    all &= Insert(std::move(CurrData));)
-  });
+  MappableC.Map(
+      [&all, this](const Data &CurrData) { all &= Insert(std::move(CurrData)); });
 
   return all;
 }
@@ -52,9 +51,8 @@ template <typename Data>
 bool DictionaryContainer<Data>::InsertSome(MappableContainer<Data> &&MappableC) noexcept {
   bool some = false;
 
-  MappableC.Map([&some, this](const Data &CurrData) {
-    some |= Insert(std::move(CurrData));)
-  });
+  MappableC.Map(
+      [&some, this](const Data &CurrData) { some |= Insert(std::move(CurrData)); });
 
   return some;
 }

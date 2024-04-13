@@ -10,7 +10,7 @@ namespace lasd {
 template <typename Data> const Data &LinearContainer<Data>::Front() const {
 
   if (size == 0) {
-    throw std::length_error();
+    throw std::length_error("Empty structure.");
   }
 
   return (*this)[0];
@@ -19,7 +19,7 @@ template <typename Data> const Data &LinearContainer<Data>::Front() const {
 template <typename Data> Data &LinearContainer<Data>::Front() {
 
   if (size == 0) {
-    throw std::length_error();
+    throw std::length_error("Empty structure.");
   }
 
   return (*this)[0];
@@ -28,7 +28,7 @@ template <typename Data> Data &LinearContainer<Data>::Front() {
 template <typename Data> const Data &LinearContainer<Data>::Back() const {
 
   if (size == 0) {
-    throw std::length_error();
+    throw std::length_error("Empty structure.");
   }
 
   return (*this)[size - 1];
@@ -37,7 +37,7 @@ template <typename Data> const Data &LinearContainer<Data>::Back() const {
 template <typename Data> Data &LinearContainer<Data>::Back() {
 
   if (size == 0) {
-    throw std::length_error();
+    throw std::length_error("Empty structure.");
   }
 
   return (*this)[size - 1];
@@ -62,7 +62,7 @@ void LinearContainer<Data>::PreOrderTraverse(TraverseFun fun) const {
 template <typename Data>
 void LinearContainer<Data>::PostOrderTraverse(TraverseFun fun) const {
 
-  for (int i = size - 1; i >= 0; i++) {
+  for (int i = size - 1; i >= 0; i--) {
     fun((*this)[i]);
   }
 }
@@ -80,7 +80,7 @@ template <typename Data> void LinearContainer<Data>::PreOrderMap(MapFun fun) {
 // Specific member function (inherited from PostOrderMappableContainer)
 
 template <typename Data> void LinearContainer<Data>::PostOrderMap(MapFun fun) {
-  for (int i = size - 1; i >= 0; i++) {
+  for (int i = size - 1; i >= 0; i--) {
     fun((*this)[i]);
   }
 }

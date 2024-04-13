@@ -18,7 +18,7 @@ namespace lasd {
 
 template <typename Data>
 class TraversableContainer : virtual public TestableContainer<Data> {
-  // Must extend TestableContainer<Data>
+  // ...
 
 private:
   // ...
@@ -28,7 +28,7 @@ protected:
 
 public:
   // Destructor
-  ~TraversableContainer() = default;
+  virtual ~TraversableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -56,7 +56,7 @@ public:
   using FoldFun = std::function<Accumulator(const Data &, const Accumulator &)>;
 
   template <typename Accumulator>
-  virtual Accumulator Fold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator Fold(FoldFun<Accumulator> func, Accumulator acc) const;
 
   /* ************************************************************************ */
 
@@ -77,7 +77,7 @@ private:
 protected:
 public:
   // Destructor
-  ~PreOrderTraversableContainer() = default;
+  virtual ~PreOrderTraversableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -101,20 +101,19 @@ public:
 
   using typename TraversableContainer<Data>::TraverseFun;
 
-  virtual PreOrderTraverse(TraverseFun) const = 0;
+  virtual void PreOrderTraverse(TraverseFun) const = 0;
 
   template <typename Accumulator>
   using FoldFun = typename TraversableContainer<Data>::FoldFun<Accumulator>;
 
   template <typename Accumulator>
-  virtual Accumulator PreOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator PreOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from TraversableContainer)
 
-  inline void Traverse(TraverseFun func) const override{
-      PreOrderTraverse(func)};
+  inline void Traverse(TraverseFun func) const override { PreOrderTraverse(func); }
 };
 
 /* ************************************************************************** */
@@ -131,7 +130,7 @@ protected:
 
 public:
   // Destructor
-  ~PostOrderTraversableContainer() = default;
+  virtual ~PostOrderTraversableContainer() = default;
 
   /* ************************************************************************ */
 
@@ -161,14 +160,15 @@ public:
   using FoldFun = typename TraversableContainer<Data>::FoldFun<Accumulator>;
 
   template <typename Accumulator>
-  virtual Accumulator PostOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator PostOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from TraversableContainer)
 
-  inline virtual void Traverse(const TraverseFun func) const override{
-      PostOrderTraverse(func)};
+  inline virtual void Traverse(const TraverseFun func) const override {
+    PostOrderTraverse(func);
+  }
 };
 
 /* ************************************************************************** */
