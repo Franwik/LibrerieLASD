@@ -37,8 +37,10 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const LinearContainer &) const noexcept = delete;
-  bool operator!=(const LinearContainer &) const noexcept = delete;
+  bool operator==(const LinearContainer &) const noexcept;
+  inline bool operator!=(const LinearContainer &con) const noexcept {
+    return !(*this == con);
+  };
 
   /* ************************************************************************ */
 
@@ -121,14 +123,18 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const SortableLinearContainer &) const noexcept = delete;
-  bool operator!=(const SortableLinearContainer &) const noexcept = delete;
+  inline bool operator==(const SortableLinearContainer &con) const noexcept {
+    return LinearContainer<Data>::operator==(con);
+  }
+  inline bool operator!=(const SortableLinearContainer &con) const noexcept {
+    return LinearContainer<Data>::operator!=(con);
+  }
 
   /* ************************************************************************ */
 
   // Specific member function
 
-  inline virtual void Sort() noexcept { quickSort(0, size-1); }
+  inline virtual void Sort() noexcept { quickSort(0, size - 1); }
 
 protected:
   // Auxiliary member functions

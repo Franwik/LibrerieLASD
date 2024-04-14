@@ -5,6 +5,22 @@ namespace lasd {
 
 // LinearContainer Methods Implementation
 
+// Operators
+
+template <typename Data>
+bool LinearContainer<Data>::operator==(const LinearContainer<Data> &con) const noexcept {
+  if (size != con.size) {
+    return false;
+  }
+
+  for (unsigned long i = 0; i < size; ++i) {
+    if ((*this)[i] != con[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 // Specific Methods
 
 template <typename Data> const Data &LinearContainer<Data>::Front() const {
@@ -49,8 +65,7 @@ template <typename Data> Data &LinearContainer<Data>::Back() {
 
 template <typename Data>
 void LinearContainer<Data>::PreOrderTraverse(TraverseFun fun) const {
-
-  for (int i = 0; i < size; i++) {
+  for (unsigned long i = 0; i < size; i++) {
     fun((*this)[i]);
   }
 }
@@ -61,16 +76,15 @@ void LinearContainer<Data>::PreOrderTraverse(TraverseFun fun) const {
 
 template <typename Data>
 void LinearContainer<Data>::PostOrderTraverse(TraverseFun fun) const {
-
-  for (int i = size - 1; i >= 0; i--) {
-    fun((*this)[i]);
+  for (unsigned long i = size; i > 0;) {
+    fun((*this)[--i]);
   }
 }
 
 // Specific member function (inherited from PreOrderMappableContainer)
 
 template <typename Data> void LinearContainer<Data>::PreOrderMap(MapFun fun) {
-  for (int i = 0; i < size; i++) {
+  for (unsigned long i = 0; i < size; i++) {
     fun((*this)[i]);
   }
 }
@@ -80,8 +94,8 @@ template <typename Data> void LinearContainer<Data>::PreOrderMap(MapFun fun) {
 // Specific member function (inherited from PostOrderMappableContainer)
 
 template <typename Data> void LinearContainer<Data>::PostOrderMap(MapFun fun) {
-  for (int i = size - 1; i >= 0; i--) {
-    fun((*this)[i]);
+  for (unsigned long i = size; i > 0;) {
+    fun((*this)[--i]);
   }
 }
 
@@ -89,7 +103,7 @@ template <typename Data> void LinearContainer<Data>::PostOrderMap(MapFun fun) {
 
 // SortableLinearContainer Auxiliary Member Functions Implementation
 
-template<typename Data>
+template <typename Data>
 void SortableLinearContainer<Data>::quickSort(unsigned long p, unsigned long r) noexcept {
 
   if (p >= r) {
@@ -102,8 +116,9 @@ void SortableLinearContainer<Data>::quickSort(unsigned long p, unsigned long r) 
   quickSort(h + 1, r);
 }
 
-template<typename Data>
-unsigned long SortableLinearContainer<Data>::partiziona(unsigned long p, unsigned long r) noexcept {
+template <typename Data>
+unsigned long SortableLinearContainer<Data>::partiziona(unsigned long p,
+                                                        unsigned long r) noexcept {
 
   Data pivot = (*this)[p];
 

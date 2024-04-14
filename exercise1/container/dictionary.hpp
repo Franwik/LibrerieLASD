@@ -14,14 +14,11 @@ namespace lasd {
 
 template <typename Data>
 class DictionaryContainer : virtual public TestableContainer<Data> {
-  // ...
 
 private:
   // ...
 
 protected:
-  // ...
-
 public:
   // Destructor
   virtual ~DictionaryContainer() = default;
@@ -29,10 +26,10 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  DictionaryContainer &operator=(const DictionaryContainer &) noexcept = delete;
+  DictionaryContainer &operator=(const DictionaryContainer &) = delete;
 
   // Move assignment
-  DictionaryContainer &operator=(DictionaryContainer &&) noexcept = delete;
+  DictionaryContainer &operator=(DictionaryContainer &&) = delete;
 
   /* ************************************************************************ */
 
@@ -44,17 +41,21 @@ public:
 
   // Specific member functions
 
-  virtual bool Insert(const Data &) noexcept = 0;
-  virtual bool Insert(Data &&) noexcept = 0;
-  virtual bool Remove(Data &&) noexcept = 0;
+  virtual bool Insert(const Data &) = 0;
+  virtual bool Insert(Data &&) = 0;
+  virtual bool Remove(const Data &) = 0;
 
-  bool InsertAll(const TraversableContainer<Data> &TraversableC) noexcept;
-  bool InsertAll(MappableContainer<Data> &&MappableC) noexcept;
-  bool RemoveAll(const TraversableContainer<Data> &TraversableC) noexcept;
+  virtual inline bool InsertAll(const TraversableContainer<Data> &);
 
-  bool InsertSome(const TraversableContainer<Data> &TraversableC) noexcept;
-  bool InsertSome(MappableContainer<Data> &&MappableC) noexcept;
-  bool RemoveSome(const TraversableContainer<Data> &TraversableC) noexcept;
+  virtual inline bool InsertAll(MappableContainer<Data> &&);
+
+  virtual inline bool RemoveAll(const TraversableContainer<Data> &);
+
+  virtual inline bool InsertSome(const TraversableContainer<Data> &);
+
+  virtual inline bool InsertSome(MappableContainer<Data> &&);
+
+  virtual inline bool RemoveSome(const TraversableContainer<Data> &);
 };
 
 /* ************************************************************************** */
