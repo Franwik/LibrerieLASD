@@ -20,7 +20,6 @@ using namespace std;
 
 /* ************************************************************************** */
 
-// TODO: Uncomment after Vector implement
 void stestVectorInt(uint &testnum, uint &testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of Vector<int> Test:" << endl;
@@ -213,7 +212,6 @@ void stestVector(uint &testnum, uint &testerr) {
 
 /* ************************************************************************** */
 
-// TODO: Uncomment after List implementation
 void stestListInt(uint &testnum, uint &testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of List<int> Test:" << endl;
@@ -414,7 +412,6 @@ void stestList(uint &testnum, uint &testerr) {
 
 /* ************************************************************************** */
 
-// TODO: Uncomment code after crossed Vector-List implementation
 void stestVectorListInt(uint &testnum, uint &testerr) {
   uint loctestnum = 0, loctesterr = 0;
   cout << endl << "Begin of Vector/List<int> Test:" << endl;
@@ -547,11 +544,8 @@ void stestVectorList(uint &testnum, uint &testerr) {
 /* ************************************************************************** */
 
 void testSimpleExercise1A(uint &testnum, uint &testerr) {
-  // TODO: Uncomment to test Vector
   stestVector(testnum, testerr);
-  // TODO: Uncomment to test Vector
   stestList(testnum, testerr);
-  // TODO: Uncomment to test Vector-List
   stestVectorList(testnum, testerr);
   cout << endl
        << "Exercise 1A (Simple Test) (Errors/Tests: " << testerr << "/" << testnum << ")"
