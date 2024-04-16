@@ -79,11 +79,6 @@ void stestVectorInt(uint &testnum, uint &testerr) {
 
       Exists(loctestnum, loctesterr, vec, true, 4);
 
-      for (unsigned int i = 0; i < vec.Size(); i++) {
-        cout << vec[i] << " ";
-      }
-      cout << endl;
-
       TraversePreOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
       TraversePostOrder(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
       FoldPreOrder(loctestnum, loctesterr, vec, true, &FoldAdd<int>, 0, 12);
@@ -258,8 +253,7 @@ void stestListInt(uint &testnum, uint &testerr) {
     TraversePreOrder(loctestnum, loctesterr, lst, true, &TraversePrint<int>);
     TraversePostOrder(loctestnum, loctesterr, lst, true, &TraversePrint<int>);
     FoldPreOrder(loctestnum, loctesterr, lst, true, &FoldAdd<int>, 0, 25);
-    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldMultiply<int>, 1,
-                  1620);
+    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldMultiply<int>, 1, 1620);
 
     RemoveFromFront(loctestnum, loctesterr, lst, true);
     FrontNRemove(loctestnum, loctesterr, lst, true, 9);
@@ -300,8 +294,8 @@ void stestListInt(uint &testnum, uint &testerr) {
     loctesterr++;
     cout << endl << "Unmanaged error! " << endl;
   }
-  cout << "End of List<int> Test! (Errors/Tests: " << loctesterr << "/"
-       << loctestnum << ")" << endl;
+  cout << "End of List<int> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum
+       << ")" << endl;
   testnum += loctestnum;
   testerr += loctesterr;
 }
@@ -330,19 +324,16 @@ void stestListDouble(uint &testnum, uint &testerr) {
     Exists(loctestnum, loctesterr, lst, false, 0.0);
 
     TraversePreOrder(loctestnum, loctesterr, lst, true, &TraversePrint<double>);
-    TraversePostOrder(loctestnum, loctesterr, lst, true,
-                      &TraversePrint<double>);
-    FoldPreOrder(loctestnum, loctesterr, lst, true, &FoldAdd<double>, 0.0,
-                 10.4);
-    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldMultiply<double>, 1.0,
-                  9.9825);
+    TraversePostOrder(loctestnum, loctesterr, lst, true, &TraversePrint<double>);
+    FoldPreOrder(loctestnum, loctesterr, lst, true, &FoldAdd<double>, 0.0, 10.4);
+    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldMultiply<double>, 1.0, 9.9825);
   } catch (...) {
     loctestnum++;
     loctesterr++;
     cout << endl << "Unmanaged error! " << endl;
   }
-  cout << "End of List<double> Test! (Errors/Tests: " << loctesterr << "/"
-       << loctestnum << ")" << endl;
+  cout << "End of List<double> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum
+       << ")" << endl;
   testnum += loctestnum;
   testerr += loctesterr;
 }
@@ -366,10 +357,10 @@ void stestListString(uint &testnum, uint &testerr) {
     MapPreOrder(loctestnum, loctesterr, lst, true,
                 [](string &str) { MapStringAppend(str, string(" ")); });
     TraversePreOrder(loctestnum, loctesterr, lst, true, &TraversePrint<string>);
-    FoldPreOrder(loctestnum, loctesterr, lst, true, &FoldStringConcatenate,
-                 string("X"), string("XA B "));
-    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldStringConcatenate,
-                  string("X"), string("XB A "));
+    FoldPreOrder(loctestnum, loctesterr, lst, true, &FoldStringConcatenate, string("X"),
+                 string("XA B "));
+    FoldPostOrder(loctestnum, loctesterr, lst, true, &FoldStringConcatenate, string("X"),
+                  string("XB A "));
 
     Exists(loctestnum, loctesterr, lst, false, string("B"));
 
@@ -392,8 +383,8 @@ void stestListString(uint &testnum, uint &testerr) {
     loctesterr++;
     cout << endl << "Unmanaged error! " << endl;
   }
-  cout << "End of List<string> Test! (Errors/Tests: " << loctesterr << "/"
-       << loctestnum << ")" << endl;
+  cout << "End of List<string> Test! (Errors/Tests: " << loctesterr << "/" << loctestnum
+       << ")" << endl;
   testnum += loctestnum;
   testerr += loctesterr;
 }
@@ -406,8 +397,8 @@ void stestList(uint &testnum, uint &testerr) {
   testnum += loctestnum;
   testerr += loctesterr;
   cout << endl
-       << "Exercise 1A - List (Errors/Tests: " << loctesterr << "/"
-       << loctestnum << ")" << endl;
+       << "Exercise 1A - List (Errors/Tests: " << loctesterr << "/" << loctestnum << ")"
+       << endl;
 }
 
 /* ************************************************************************** */
@@ -479,8 +470,8 @@ void stestVectorListDouble(uint &testnum, uint &testerr) {
     loctesterr++;
     cout << endl << "Unmanaged error! " << endl;
   }
-  cout << "End of Vector/List<double> Test! (Errors/Tests: " << loctesterr
-       << "/" << loctestnum << ")" << endl;
+  cout << "End of Vector/List<double> Test! (Errors/Tests: " << loctesterr << "/"
+       << loctestnum << ")" << endl;
   testnum += loctestnum;
   testerr += loctesterr;
 }
@@ -523,8 +514,8 @@ void stestVectorListString(uint &testnum, uint &testerr) {
     loctesterr++;
     cout << endl << "Unmanaged error! " << endl;
   }
-  cout << "End of Vector/List<string> Test! (Errors/Tests: " << loctesterr
-       << "/" << loctestnum << ")" << endl;
+  cout << "End of Vector/List<string> Test! (Errors/Tests: " << loctesterr << "/"
+       << loctestnum << ")" << endl;
   testnum += loctestnum;
   testerr += loctesterr;
 }
@@ -537,8 +528,8 @@ void stestVectorList(uint &testnum, uint &testerr) {
   testnum += loctestnum;
   testerr += loctesterr;
   cout << endl
-       << "Exercise 1A - Vector/List (Errors/Tests: " << loctesterr << "/"
-       << loctestnum << ")" << endl;
+       << "Exercise 1A - Vector/List (Errors/Tests: " << loctesterr << "/" << loctestnum
+       << ")" << endl;
 }
 
 /* ************************************************************************** */
