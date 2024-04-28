@@ -13,22 +13,21 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data> class TestableContainer : virtual public Container {
-  // ...
 
 private:
   // ...
 
 protected:
-  // ...
+  // Default constructor
 
 public:
   // Destructor
-  ~TestableContainer() = default;
+  virtual ~TestableContainer() = default;
 
   /* ************************************************************************ */
 
   // Copy assignment
-  TestableContainer &operator=(const TestableContainer &) noexcept = delete;
+  TestableContainer &operator=(const TestableContainer &) = delete;
 
   // Move assignment
   TestableContainer &operator=(TestableContainer &&) noexcept = delete;

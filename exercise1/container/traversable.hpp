@@ -18,13 +18,12 @@ namespace lasd {
 
 template <typename Data>
 class TraversableContainer : virtual public TestableContainer<Data> {
-  // ...
 
 private:
   // ...
 
 protected:
-  // ...
+  // Default constructor
 
 public:
   // Destructor
@@ -33,7 +32,7 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  TraversableContainer &operator=(const TraversableContainer &) noexcept = delete;
+  TraversableContainer &operator=(const TraversableContainer &) = delete;
 
   // Move assignment
   TraversableContainer &operator=(TraversableContainer &&) noexcept = delete;
@@ -41,6 +40,7 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
+
   bool operator==(const TraversableContainer &) const noexcept = delete;
   bool operator!=(const TraversableContainer &) const noexcept = delete;
 
@@ -50,31 +50,32 @@ public:
 
   using TraverseFun = std::function<void(const Data &)>;
 
-  virtual void Traverse(const TraverseFun) const = 0;
+  virtual void Traverse(TraverseFun) const = 0;
 
   template <typename Accumulator>
   using FoldFun = std::function<Accumulator(const Data &, const Accumulator &)>;
 
   template <typename Accumulator>
-  inline Accumulator Fold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator Fold(FoldFun<Accumulator> func, Accumulator base) const;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from TestableContainer)
 
-  virtual bool Exists(const Data &) const noexcept override;
+  inline bool Exists(const Data &) const noexcept override;
 };
 
 /* ************************************************************************** */
 
 template <typename Data>
 class PreOrderTraversableContainer : virtual public TraversableContainer<Data> {
-  // Must extend TraversableContainer<Data>
 
 private:
   // ...
 
 protected:
+  // Default constructor
+
 public:
   // Destructor
   virtual ~PreOrderTraversableContainer() = default;
@@ -83,7 +84,7 @@ public:
 
   // Copy assignment
   PreOrderTraversableContainer &
-  operator=(const PreOrderTraversableContainer &) noexcept = delete;
+  operator=(const PreOrderTraversableContainer &) = delete;
 
   // Move assignment
   PreOrderTraversableContainer &
@@ -101,32 +102,33 @@ public:
 
   using typename TraversableContainer<Data>::TraverseFun;
 
-  virtual void PreOrderTraverse(TraverseFun) const = 0;
+  virtual void PreOrderTraverse(const TraverseFun) const = 0;
 
   template <typename Accumulator>
-  using FoldFun = typename TraversableContainer<Data>::FoldFun<Accumulator>;
+  using FoldFun =
+      typename TraversableContainer<Data>::template FoldFun<Accumulator>;
 
   template <typename Accumulator>
-  inline Accumulator PreOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator PreOrderFold(FoldFun<Accumulator>, Accumulator) const;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from TraversableContainer)
 
-  inline void Traverse(TraverseFun func) const override { PreOrderTraverse(func); }
+  inline void Traverse(TraverseFun) const override;
 };
 
 /* ************************************************************************** */
 
 template <typename Data>
-class PostOrderTraversableContainer : virtual public TraversableContainer<Data> {
-  // Must extend TraversableContainer<Data>
+class PostOrderTraversableContainer
+    : virtual public TraversableContainer<Data> {
 
 private:
   // ...
 
 protected:
-  // ...
+  // Default constructor
 
 public:
   // Destructor
@@ -136,7 +138,7 @@ public:
 
   // Copy assignment
   PostOrderTraversableContainer &
-  operator=(const PostOrderTraversableContainer &) noexcept = delete;
+  operator=(const PostOrderTraversableContainer &) = delete;
 
   // Move assignment
   PostOrderTraversableContainer &
@@ -145,8 +147,10 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const PostOrderTraversableContainer &) const noexcept = delete;
-  bool operator!=(const PostOrderTraversableContainer &) const noexcept = delete;
+  bool
+  operator==(const PostOrderTraversableContainer &) const noexcept = delete;
+  bool
+  operator!=(const PostOrderTraversableContainer &) const noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -157,20 +161,20 @@ public:
   virtual void PostOrderTraverse(TraverseFun) const = 0;
 
   template <typename Accumulator>
-  using FoldFun = typename TraversableContainer<Data>::FoldFun<Accumulator>;
+  using FoldFun =
+      typename TraversableContainer<Data>::template FoldFun<Accumulator>;
 
   template <typename Accumulator>
-  inline Accumulator PostOrderFold(FoldFun<Accumulator> func, Accumulator acc) const;
+  inline Accumulator PostOrderFold(FoldFun<Accumulator>, Accumulator) const;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from TraversableContainer)
 
-  inline virtual void Traverse(const TraverseFun func) const override {
-    PostOrderTraverse(func);
-  }
+  inline void Traverse(TraverseFun) const override;
 };
 
+// TODO: Not yet implemented (Not needed in Ex 1)
 /* ************************************************************************** */
 
 template <typename Data> class InOrderTraversableContainer {

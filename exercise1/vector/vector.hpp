@@ -14,7 +14,8 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class Vector : virtual public ResizableContainer, virtual public LinearContainer<Data> {
+class Vector : virtual public ResizableContainer,
+               virtual public LinearContainer<Data> {
 
 private:
   // ...
@@ -69,13 +70,13 @@ public:
 
   // Specific member function (inherited from ClearableContainer)
 
-  inline void Clear() override;
+  inline void Clear() override; // Override ClearableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from ResizableContainer)
 
-  void Resize(unsigned long) override;
+  void Resize(unsigned long) override; // Override ResizableContainer member
 
   /* ************************************************************************ */
 
@@ -137,6 +138,7 @@ public:
   /* ************************************************************************ */
 
   // Destructor
+  // ~SortableVector() specifiers;
   virtual ~SortableVector() = default;
 
   /* ************************************************************************ */

@@ -6,7 +6,8 @@ namespace lasd {
 // Constructor
 
 // Default constructor
-template <typename Data> StackVec<Data>::StackVec() : Vector<Data>::Vector(INIT_SIZE) {}
+template <typename Data>
+StackVec<Data>::StackVec() : Vector<Data>::Vector(INIT_SIZE) {}
 
 // Copy constructor from Different DataStructures
 template <typename Data>
@@ -26,7 +27,8 @@ StackVec<Data>::StackVec(MappableContainer<Data> &&con)
 
 // Copy constructor
 template <typename Data>
-StackVec<Data>::StackVec(const StackVec<Data> &s) : Vector<Data>::Vector(s), top(s.top) {}
+StackVec<Data>::StackVec(const StackVec<Data> &s)
+    : Vector<Data>::Vector(s), top(s.top) {}
 
 // Move constructor
 template <typename Data>

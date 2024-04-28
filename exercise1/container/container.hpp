@@ -99,7 +99,8 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  ResizableContainer &operator=(const ResizableContainer &Ccon) noexcept = delete;
+  ResizableContainer &
+  operator=(const ResizableContainer &Ccon) noexcept = delete;
 
   // Move assignment
   ResizableContainer &operator=(ResizableContainer &&Ccon) noexcept = delete;
