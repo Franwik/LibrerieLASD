@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Ignorecustom test files
+
+**/zmytest/
