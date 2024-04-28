@@ -14,7 +14,7 @@ private:
   // ...
 
 protected:
-  unsigned long size = 0;
+  unsigned long size{0};
 
   /* ************************************************************************ */
 
@@ -28,7 +28,7 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  Container &operator=(const Container &) noexcept = delete;
+  Container &operator=(const Container &) = delete;
 
   // Move assignment
   Container &operator=(Container &&) noexcept = delete;
@@ -37,26 +37,27 @@ public:
 
   // Comparison operators
   bool operator==(const Container &) const noexcept = delete;
+
   bool operator!=(const Container &) const noexcept = delete;
 
   /* ************************************************************************ */
 
   // Specific member functions
 
-  bool Empty() const noexcept { return size == 0; }
+  inline virtual bool Empty() const noexcept { return 0 == size; }
 
-  unsigned long Size() const noexcept { return size; }
+  inline virtual unsigned long Size() const noexcept { return size; }
 };
 
 /* ************************************************************************** */
 
 class ClearableContainer : virtual public Container {
-  // Must extend Container
-
 private:
   // ...
 
 protected:
+  // Default constructor
+
 public:
   // Destructor
   virtual ~ClearableContainer() = default;
@@ -67,13 +68,13 @@ public:
   ClearableContainer &operator=(const ClearableContainer &) = delete;
 
   // Move assignment
-  ClearableContainer &operator=(ClearableContainer &&) = delete;
+  ClearableContainer &operator=(ClearableContainer &&) noexcept = delete;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const ClearableContainer &) const noexcept = delete;
-  bool operator!=(const ClearableContainer &) const noexcept = delete;
+  bool operator==(const ClearableContainer &Ccon) const noexcept = delete;
+  bool operator!=(const ClearableContainer &Ccon) const noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -85,12 +86,12 @@ public:
 /* ************************************************************************** */
 
 class ResizableContainer : virtual public ClearableContainer {
-  // Must extend ClearableContainer
 
 private:
   // ...
-
 protected:
+  // Default constructor
+
 public:
   // Destructor
   virtual ~ResizableContainer() = default;
@@ -98,28 +99,28 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  ResizableContainer &operator=(const ResizableContainer &) = delete;
+  ResizableContainer &operator=(const ResizableContainer &Ccon) noexcept = delete;
 
   // Move assignment
-  ResizableContainer &operator=(ResizableContainer &&) = delete;
+  ResizableContainer &operator=(ResizableContainer &&Ccon) noexcept = delete;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const ResizableContainer &) const noexcept = delete;
-  bool operator!=(const ResizableContainer &) const noexcept = delete;
+  bool operator==(const ResizableContainer &Ccon) const noexcept = delete;
+  bool operator!=(const ResizableContainer &Ccon) const noexcept = delete;
 
   /* ************************************************************************ */
 
   // Specific member functions
 
-  virtual void Resize(unsigned long size) = 0;
+  virtual void Resize(unsigned long) = 0;
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from ClearableContainer)
 
-  virtual void Clear() override { Resize(0); }
+  void Clear() override { Resize(0); }
 };
 
 /* ************************************************************************** */
