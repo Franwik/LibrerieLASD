@@ -2,7 +2,7 @@
 # Make and Execute exercise 1
 
 ex=1
-while i in $(seq 1 $ex); do
+for i in $(seq 1 $ex); do
   make -C exercise$i
   exercise$i/main
   result=$?
