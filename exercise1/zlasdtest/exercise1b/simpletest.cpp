@@ -20,7 +20,6 @@ using namespace std;
 
 /* ************************************************************************** */
 
-// TODO: Uncomment to test Stack
 template <typename Stk>
 void stestStackInt(Stk &stk, unsigned int &testnum, unsigned int &testerr) {
   unsigned int loctestnum = 0, loctesterr = 0;
@@ -199,7 +198,6 @@ void stestStack(unsigned int &testnum, unsigned int &testerr) {
 /* **************************************************************************
  */
 
-// TODO: Uncomment to Test Queue
 template <typename Que>
 void stestQueueInt(Que &que, unsigned int &testnum, unsigned int &testerr) {
   unsigned int loctestnum = 0, loctesterr = 0;
