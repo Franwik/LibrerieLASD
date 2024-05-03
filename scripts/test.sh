@@ -1,8 +1,8 @@
 
 # Make and Execute exercises
 
-start=1
-finish=1
+start=2
+finish=2
 for i in $(seq $start $finish); do
   make -C exercise$i
   exercise$i/main
