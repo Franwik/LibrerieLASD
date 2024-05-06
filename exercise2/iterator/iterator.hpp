@@ -38,7 +38,7 @@ public:
 
   // Specific member functions
 
-  // TODO: format this shit removing the side comments
+  // * remember to throw exception
   virtual Data &operator*() const = 0; // (non-mutable version; concrete function must
                                        // throw std::out_of_range when terminated)
 
@@ -78,7 +78,7 @@ public:
 
   // Specific member functions
 
-  // TODO: format this shit removing the side comment
+  // * remember to throw exception
   virtual Data &operator*() = 0; // (mutable version; concrete function must throw
   // std::out_of_range when terminated)
 };
@@ -115,7 +115,7 @@ public:
 
   // Specific member functions
 
-  // TODO: format this shit removing the side comment
+  // * remember to throw exception
   ForwardIterator &
   operator++() const = 0; // (concrete function must throw std::out_of_range when
   // terminated)
