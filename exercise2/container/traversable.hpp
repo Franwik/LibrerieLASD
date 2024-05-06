@@ -204,7 +204,7 @@ public:
 
   using typename TraversableContainer<Data>::TraverseFun;
 
-  virtual void InOrderTraverse(TraverseFun) cont = 0;
+  virtual void InOrderTraverse(TraverseFun) const = 0;
 
   template <typename Accumulator>
   using FoldFun = typename TraversableContainer<Data>::FoldFun<Accumulator>;

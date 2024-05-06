@@ -97,8 +97,8 @@ InOrderTraversableContainer<Data>::InOrderFold(FoldFun<Accumulator> func,
 // Specific Methods
 
 template <typename Data>
-inline void BreadthTraversableContainer<Data>::Traverse(TraverseFun) const {
-  BreadthTraverse(TraverseFun);
+inline void BreadthTraversableContainer<Data>::Traverse(TraverseFun func) const {
+  BreadthTraverse(func);
 }
 
 template <typename Data>

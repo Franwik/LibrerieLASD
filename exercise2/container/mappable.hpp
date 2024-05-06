@@ -143,7 +143,6 @@ public:
 
 /* ************************************************************************** */
 
-// TODO: Not yet implemented (Not needed in Ex 1)
 template <typename Data>
 class InOrderMappableContainer : virtual public MappableContainer<Data>,
                                  virtual public InOrderTraversableContainer<Data> {
