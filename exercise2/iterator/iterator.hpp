@@ -38,8 +38,8 @@ public:
 
   // Specific member functions
 
-  // * remember to throw exception
-  virtual Data &operator*() const = 0; // (non-mutable version; concrete function must
+  // TODO: remember to throw exception
+  virtual const Data &operator*() const = 0; // (non-mutable version; concrete function must
                                        // throw std::out_of_range when terminated)
 
   virtual bool
@@ -116,7 +116,7 @@ public:
   // Specific member functions
 
   // * remember to throw exception
-  ForwardIterator &
+  virtual ForwardIterator &
   operator++() const = 0; // (concrete function must throw std::out_of_range when
   // terminated)
 };
@@ -153,7 +153,7 @@ public:
 
   // Specific member functions
 
-  void Reset() const noexcept = 0;
+  virtual void Reset() const noexcept = 0;
 };
 
 /* ************************************************************************** */
