@@ -38,12 +38,9 @@ public:
 
   // Specific member functions
 
-  // TODO: remember to throw exception
-  virtual const Data &operator*() const = 0; // (non-mutable version; concrete function must
-                                       // throw std::out_of_range when terminated)
+  virtual const Data &operator*() const = 0;
 
-  virtual bool
-  Terminated() const noexcept = 0; // (concrete function should not throw exceptions)
+  virtual bool Terminated() const noexcept = 0;
 };
 
 /* ************************************************************************** */
