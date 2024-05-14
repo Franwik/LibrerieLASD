@@ -107,6 +107,8 @@ inline Accumulator
 BreadthTraversableContainer<Data>::BreadthFold(FoldFun<Accumulator> func,
                                                Accumulator base) const {
   BreadthTraverse([&base, &func](const Data &currData) { base = func(currData, base); });
+
+  return base;
 }
 
 } // namespace lasd

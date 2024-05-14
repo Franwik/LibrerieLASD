@@ -26,7 +26,7 @@ public:
   Iterator &operator=(Iterator &) = delete;
 
   // Move assignment
-  Iterator &&operator=(Iterator &&) noexcept = delete;
+  Iterator &operator=(Iterator &&) noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -63,7 +63,7 @@ public:
   MutableIterator &operator=(MutableIterator &) = delete;
 
   // Move assignment
-  MutableIterator &&operator=(MutableIterator &&) noexcept = delete;
+  MutableIterator &operator=(MutableIterator &&) noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -100,7 +100,7 @@ public:
   ForwardIterator &operator=(ForwardIterator &) = delete;
 
   // Move assignment
-  ForwardIterator &&operator=(ForwardIterator &&) noexcept = delete;
+  ForwardIterator &operator=(ForwardIterator &&) noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -112,10 +112,7 @@ public:
 
   // Specific member functions
 
-  // * remember to throw exception
-  virtual ForwardIterator &
-  operator++() const = 0; // (concrete function must throw std::out_of_range when
-  // terminated)
+  virtual ForwardIterator &operator++() = 0;
 };
 
 /* ************************************************************************** */
@@ -138,7 +135,7 @@ public:
   ResettableIterator &operator=(ResettableIterator &) = delete;
 
   // Move assignment
-  ResettableIterator &&operator=(ResettableIterator &&) noexcept = delete;
+  ResettableIterator &operator=(ResettableIterator &&) noexcept = delete;
 
   /* ************************************************************************ */
 
@@ -150,7 +147,7 @@ public:
 
   // Specific member functions
 
-  virtual void Reset() const noexcept = 0;
+  virtual void Reset() noexcept = 0;
 };
 
 /* ************************************************************************** */

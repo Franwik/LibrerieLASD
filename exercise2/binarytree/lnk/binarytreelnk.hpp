@@ -24,19 +24,18 @@ protected:
 
   struct NodeLnk : virtual public MutableBinaryTree<Data>::MutableNode {
 
-  private:
-    // ...
-
-  protected:
-    Data element;
+  public:
     NodeLnk *leftChild = nullptr;
     NodeLnk *rightChild = nullptr;
+    Data element{};
 
   public:
     /* ********************************************************************** */
 
     // Specific constructor
     NodeLnk(const Data &);
+
+    NodeLnk(Data &&);
 
     // Copy constructor
     NodeLnk(const NodeLnk &);
@@ -55,19 +54,22 @@ protected:
     NodeLnk &operator=(NodeLnk &);
 
     // Move assignment
-    NodeLnk &&operator=(NodeLnk &&) noexcept;
+    NodeLnk &operator=(NodeLnk &&) noexcept;
 
     /* ********************************************************************** */
 
     // Specific member functions
 
+    const Data &Element() const noexcept override;
     Data &Element() noexcept override;
 
     inline bool HasLeftChild() const noexcept override;
     inline bool HasRightChild() const noexcept override;
 
-    Data &LeftChild() override;
-    Data &RightChild() override;
+    inline const Node &LeftChild() const override;
+    inline const Node &RightChild() const override;
+    inline MutableNode &LeftChild() override;
+    inline MutableNode &RightChild() override;
   };
 
   NodeLnk *root;
@@ -98,22 +100,24 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  BinaryTreeLnk &operator=(BinaryTreeLnk &);
+  BinaryTreeLnk &operator=(const BinaryTreeLnk &);
 
   // Move assignment
-  BinaryTreeLnk &&operator=(BinaryTreeLnk &&) noexcept;
+  BinaryTreeLnk &operator=(BinaryTreeLnk &&) noexcept;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  inline bool operator==(BinaryTreeLnk &) const noexcept;
-  inline bool operator!=(BinaryTreeLnk &) const noexcept;
+  inline bool operator==(const BinaryTreeLnk &) const noexcept;
+  inline bool operator!=(const BinaryTreeLnk &) const noexcept;
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from BinaryTree)
 
   inline const Node &Root() const override;
+
+  NodeLnk *getRoot() { return root; }
 
   /* ************************************************************************ */
 

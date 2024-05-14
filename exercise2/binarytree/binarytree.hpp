@@ -54,7 +54,7 @@ public:
     Node &operator=(Node &) = delete;
 
     // Move assignment
-    Node &&operator=(Node &&) noexcept = delete;
+    Node &operator=(Node &&) noexcept = delete;
 
     /* ********************************************************************** */
 
@@ -81,13 +81,13 @@ public:
   BinaryTree &operator=(BinaryTree &) = delete;
 
   // Move assignment
-  BinaryTree &&operator=(BinaryTree &&) = delete;
+  BinaryTree &operator=(BinaryTree &&) = delete;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(BinaryTree &) const noexcept;
-  inline bool operator!=(BinaryTree &) const noexcept;
+  bool operator==(const BinaryTree &) const noexcept;
+  inline bool operator!=(const BinaryTree &) const noexcept;
 
   /* ************************************************************************ */
 
@@ -154,6 +154,9 @@ public:
   struct MutableNode : virtual public BinaryTree<Data>::Node {
 
     friend class MutableBinaryTree<Data>;
+    using BinaryTree<Data>::Node::LeftChild;
+    using BinaryTree<Data>::Node::RightChild;
+    using BinaryTree<Data>::Node::Element;
 
     /* ********************************************************************** */
 
@@ -166,7 +169,7 @@ public:
     MutableNode &operator=(MutableNode &) = delete;
 
     // Move assignment
-    MutableNode &&operator=(MutableNode &&) noexcept = delete;
+    MutableNode &operator=(MutableNode &&) noexcept = delete;
 
     /* ********************************************************************** */
 
@@ -174,8 +177,8 @@ public:
 
     virtual Data &Element() noexcept = 0;
 
-    virtual Data &LeftChild() = 0;
-    virtual Data &RightChild() = 0;
+    virtual MutableNode &LeftChild() = 0;
+    virtual MutableNode &RightChild() = 0;
   };
 
   /* ************************************************************************ */
@@ -189,7 +192,7 @@ public:
   MutableBinaryTree &operator=(MutableBinaryTree &) = delete;
 
   // Move assignment
-  MutableBinaryTree &&operator=(MutableBinaryTree &&) = delete;
+  MutableBinaryTree &operator=(MutableBinaryTree &&) = delete;
 
   /* ************************************************************************ */
 
@@ -272,7 +275,7 @@ public:
   BTPreOrderIterator &operator=(const BTPreOrderIterator &);
 
   // Move assignment
-  BTPreOrderIterator &&operator=(BTPreOrderIterator &&);
+  BTPreOrderIterator &operator=(BTPreOrderIterator &&);
 
   /* ************************************************************************ */
 
@@ -292,7 +295,7 @@ public:
 
   // Specific member functions (inherited from ForwardIterator)
 
-  BTPreOrderIterator &operator++() override;
+  ForwardIterator<Data> &operator++() override;
 
   /* ************************************************************************ */
 
@@ -334,7 +337,7 @@ public:
   BTPreOrderMutableIterator &operator=(const BTPreOrderMutableIterator &);
 
   // Move assignment
-  BTPreOrderMutableIterator &&operator=(BTPreOrderMutableIterator &&);
+  BTPreOrderMutableIterator &operator=(BTPreOrderMutableIterator &&);
 
   /* ************************************************************************ */
 
@@ -385,7 +388,7 @@ public:
   BTPostOrderIterator &operator=(const BTPostOrderIterator &);
 
   // Move assignment
-  BTPostOrderIterator &&operator=(BTPostOrderIterator &&);
+  BTPostOrderIterator &operator=(BTPostOrderIterator &&);
 
   /* ************************************************************************ */
 
@@ -405,7 +408,7 @@ public:
 
   // Specific member functions (inherited from ForwardIterator)
 
-  BTPostOrderIterator &operator++() override;
+  ForwardIterator<Data> &operator++() override;
 
   /* ************************************************************************ */
 
@@ -454,7 +457,7 @@ public:
   BTPostOrderMutableIterator &operator=(const BTPostOrderMutableIterator &);
 
   // Move assignment
-  BTPostOrderMutableIterator &&operator=(BTPostOrderMutableIterator &&);
+  BTPostOrderMutableIterator &operator=(BTPostOrderMutableIterator &&);
 
   /* ************************************************************************ */
 
@@ -505,7 +508,7 @@ public:
   BTInOrderIterator &operator=(const BTInOrderIterator &);
 
   // Move assignment
-  BTInOrderIterator &&operator=(BTInOrderIterator &&);
+  BTInOrderIterator &operator=(BTInOrderIterator &&);
 
   /* ************************************************************************ */
 
@@ -525,7 +528,7 @@ public:
 
   // Specific member functions (inherited from ForwardIterator)
 
-  BTInOrderIterator &operator++() override;
+  ForwardIterator<Data> &operator++() override;
 
   /* ************************************************************************ */
 
@@ -574,7 +577,7 @@ public:
   BTInOrderMutableIterator &operator=(const BTInOrderMutableIterator &);
 
   // Move assignment
-  BTInOrderMutableIterator &&operator=(BTInOrderMutableIterator &&);
+  BTInOrderMutableIterator &operator=(BTInOrderMutableIterator &&);
 
   /* ************************************************************************ */
 
@@ -625,7 +628,7 @@ public:
   BTBreadthIterator &operator=(const BTBreadthIterator &);
 
   // Move assignment
-  BTBreadthIterator &&operator=(BTBreadthIterator &&);
+  BTBreadthIterator &operator=(BTBreadthIterator &&);
 
   /* ************************************************************************ */
 
@@ -645,7 +648,7 @@ public:
 
   // Specific member functions (inherited from ForwardIterator)
 
-  BTBreadthIterator &operator++() override;
+  ForwardIterator<Data> &operator++() override;
 
   /* ************************************************************************ */
 
@@ -689,7 +692,7 @@ public:
   BTBreadthMutableIterator &operator=(const BTBreadthMutableIterator &);
 
   // Move assignment
-  BTBreadthMutableIterator &&operator=(BTBreadthMutableIterator &&);
+  BTBreadthMutableIterator &operator=(BTBreadthMutableIterator &&);
 
   /* ************************************************************************ */
 
