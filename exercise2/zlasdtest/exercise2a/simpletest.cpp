@@ -199,7 +199,6 @@ void stestBinaryTreeFloat(uint &testnum, uint &testerr) {
     EqualBT(loctestnum, loctesterr, copbtvec, btvec);
 
     lasd::BinaryTreeLnk<double> copbtlnk(move(btlnk));
-    cout << "si rompe qui?" << endl;
     Empty(loctestnum, loctesterr, btlnk, true);
     NonEqualBT(loctestnum, loctesterr, copbtlnk, btlnk);
     btlnk = copbtlnk;
