@@ -11,6 +11,6 @@ using namespace std;
 
 int main() {
   lasdtest();
-  mytest();
+  mytest::mytest();
   return 0;
 }

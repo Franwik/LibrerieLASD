@@ -7,6 +7,8 @@
 #include "binarytree/binarytree.hpp"
 #include "bst/bst.hpp"
 
+namespace mytest {
+
 using namespace std;
 using TestFun = function<void(unsigned int &, unsigned int &)>;
 
@@ -60,3 +62,5 @@ void mytest() {
   cout << "\n\n#~~~~~~~~~~~~~~~~~~~~~~~~~~~" + comment(testerr) +
               "~~~~~~~~~~~~~~~~~~~~~~~~~~#\n\n";
 }
+
+} // namespace mytest

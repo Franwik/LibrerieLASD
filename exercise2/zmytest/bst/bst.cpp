@@ -9,6 +9,9 @@
 #include "../../zlasdtest/container/testable.hpp"
 #include "../../zlasdtest/container/traversable.hpp"
 
+#include "../../zlasdtest/binarytree/binarytree.hpp"
+#include "../../zlasdtest/bst/bst.hpp"
+#include "../../zlasdtest/iterator/iterator.hpp"
 #include "../../zlasdtest/list/list.hpp"
 #include "../../zlasdtest/queue/queue.hpp"
 #include "../../zlasdtest/stack/stack.hpp"
@@ -21,6 +24,8 @@
 #include "../../iterator/iterator.hpp"
 
 /* ************************************************************************** */
+
+namespace mytest {
 
 using namespace std;
 
@@ -48,3 +53,5 @@ void my_bst_int(unsigned int &testnum, unsigned int &testerr) {
 void my_bst_test(unsigned int &testnum, unsigned int &testerr) {
   my_bst_int(testnum, testerr);
 }
+
+} // namespace mytest
