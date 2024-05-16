@@ -76,7 +76,6 @@ void stestBinaryTreeInt(uint &testnum, uint &testerr) {
     btlnk = move(copbtlnk);
     NonEqualBT(loctestnum, loctesterr, copbtlnk, btlnk);
     Empty(loctestnum, loctesterr, copbtlnk, true);
-    btlnk.Traverse(TraversePrint<int>);
   } catch (...) {
     loctestnum++;
     loctesterr++;

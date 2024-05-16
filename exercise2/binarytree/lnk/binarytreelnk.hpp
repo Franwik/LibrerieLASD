@@ -25,8 +25,8 @@ protected:
   struct NodeLnk : virtual public MutableBinaryTree<Data>::MutableNode {
 
   public:
-    NodeLnk *leftChild = nullptr;
-    NodeLnk *rightChild = nullptr;
+    NodeLnk *leftChild{nullptr};
+    NodeLnk *rightChild{nullptr};
     Data element{};
 
   public:
@@ -72,7 +72,7 @@ protected:
     inline MutableNode &RightChild() override;
   };
 
-  NodeLnk *root;
+  NodeLnk *root{nullptr};
 
 public:
   // Default constructor
@@ -116,8 +116,6 @@ public:
   // Specific member functions (inherited from BinaryTree)
 
   inline const Node &Root() const override;
-
-  NodeLnk *getRoot() { return root; }
 
   /* ************************************************************************ */
 

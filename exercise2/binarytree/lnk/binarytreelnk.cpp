@@ -144,7 +144,7 @@ template <typename Data>
 BinaryTreeLnk<Data>::BinaryTreeLnk(MappableContainer<Data> &&con) {
   QueueLst<NodeLnk *> queue{};
 
-  con.Map([this, &queue](Data &currData) {
+  con.Map([this, &queue](Data &&currData) {
     NodeLnk *node = new NodeLnk(currData);
 
     queue.Enqueue(node);
