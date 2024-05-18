@@ -96,9 +96,7 @@ void stestBSTInt(uint & testnum, uint & testerr) {
 
     Successor(loctestnum, loctesterr, bst, true, 2, 3);
     Successor(loctestnum, loctesterr, bst, true, 4, 6);
-      TraverseInOrder(loctestnum, loctesterr, bst, true, &TraversePrint<int>);
     PredecessorNRemove(loctestnum, loctesterr, bst, true, 7, 6);
-      TraverseInOrder(loctestnum, loctesterr, bst, true, &TraversePrint<int>);
     SuccessorNRemove(loctestnum, loctesterr, bst, true, 0, 1);
     FoldPreOrder(loctestnum, loctesterr, bst, true, &FoldAdd<int>, 0, 6);
     FoldInOrder(loctestnum, loctesterr, bst, true, &FoldAdd<int>, 0, 6);

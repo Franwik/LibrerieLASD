@@ -13,7 +13,7 @@ template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const Data &dat) 
 }
 
 template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(Data &&dat) {
-  element = std::move(dat);
+  std::swap(element, dat);
 }
 
 template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const NodeLnk &other) {
@@ -40,14 +40,15 @@ template <typename Data> BinaryTreeLnk<Data>::NodeLnk::~NodeLnk() {
 // Operators
 
 template <typename Data>
-BinaryTreeLnk<Data>::NodeLnk &BinaryTreeLnk<Data>::NodeLnk::operator=(NodeLnk &other) {
+typename BinaryTreeLnk<Data>::NodeLnk &
+BinaryTreeLnk<Data>::NodeLnk::operator=(const NodeLnk &other) {
   NodeLnk temp{other};
   std::swap(temp, *this);
   return *this;
 }
 
 template <typename Data>
-BinaryTreeLnk<Data>::NodeLnk &
+typename BinaryTreeLnk<Data>::NodeLnk &
 BinaryTreeLnk<Data>::NodeLnk::operator=(NodeLnk &&other) noexcept {
   std::swap(element, other.element);
   std::swap(leftChild, other.leftChild);
@@ -144,8 +145,8 @@ template <typename Data>
 BinaryTreeLnk<Data>::BinaryTreeLnk(MappableContainer<Data> &&con) {
   QueueLst<NodeLnk *> queue{};
 
-  con.Map([this, &queue](Data &&currData) {
-    NodeLnk *node = new NodeLnk(currData);
+  con.Map([this, &queue](Data &currData) {
+    NodeLnk *node = new NodeLnk(std::move(currData));
 
     queue.Enqueue(node);
 

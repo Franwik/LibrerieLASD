@@ -33,9 +33,9 @@ protected:
     /* ********************************************************************** */
 
     // Specific constructor
-    NodeVec(const Data &, const unsigned long &, BinaryTreeVec *);
+    NodeVec(const Data &, unsigned long &, BinaryTreeVec *);
 
-    NodeVec(Data &&, const unsigned long &, BinaryTreeVec *);
+    NodeVec(Data &&, unsigned long &, BinaryTreeVec *);
 
     // Copy constructor
     NodeVec(const NodeVec &);
@@ -51,7 +51,7 @@ protected:
     /* ********************************************************************** */
 
     // Copy assignment
-    NodeVec &operator=(NodeVec &);
+    NodeVec &operator=(const NodeVec &);
 
     // Move assignment
     NodeVec &operator=(NodeVec &&) noexcept;
@@ -100,7 +100,7 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  BinaryTreeVec &operator=(BinaryTreeVec &);
+  BinaryTreeVec &operator=(const BinaryTreeVec &);
 
   // Move assignment
   BinaryTreeVec &operator=(BinaryTreeVec &&) noexcept;

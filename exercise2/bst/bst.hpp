@@ -90,8 +90,6 @@ public:
 
   inline const Node &Root() const override;
 
-  NodeLnk *getRoot() { return root; }
-
   /* ************************************************************************ */
 
   // Specific member functions (inherited from DictionaryContainer)
@@ -131,6 +129,7 @@ protected:
   bool Search(NodeLnk *, const Data &);
 
   NodeLnk *Insert(NodeLnk *, const Data &);
+  NodeLnk *Insert(NodeLnk *, Data &&);
 
   NodeLnk *Remove(NodeLnk *, const Data &);
   NodeLnk *DeleteData(NodeLnk *);

@@ -75,9 +75,7 @@ public:
 
   // Specific member functions
 
-  // * remember to throw exception
-  virtual Data &operator*() = 0; // (mutable version; concrete function must throw
-  // std::out_of_range when terminated)
+  virtual Data &operator*() = 0;
 };
 
 /* ************************************************************************** */

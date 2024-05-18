@@ -11,7 +11,7 @@ template <typename Data> BST<Data>::BST(const TraversableContainer<Data> &con) {
 }
 
 template <typename Data> BST<Data>::BST(MappableContainer<Data> &&con) {
-  con.Map([this](Data &&currData) { Insert(std::move(currData)); });
+  con.Map([this](Data &currData) { Insert(std::move(currData)); });
 }
 
 template <typename Data>
@@ -161,13 +161,13 @@ template <typename Data> bool BST<Data>::Insert(const Data &dat) {
 
 template <typename Data> bool BST<Data>::Insert(Data &&dat) {
   unsigned long prevSize{size};
-  root = Insert(root, dat);
+  root = Insert(root, std::move(dat));
   return prevSize != size;
 }
 
 template <typename Data> bool BST<Data>::Remove(const Data &dat) {
   unsigned long prevSize{size};
-  Remove(root, dat);
+  root = Remove(root, dat);
   return prevSize != size;
 }
 
@@ -322,6 +322,22 @@ typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr
 }
 
 template <typename Data>
+typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr,
+                                               Data &&dat) {
+  if (curr == nullptr) {
+    curr = new NodeLnk(std::move(dat));
+    size++;
+  } else {
+    if (curr->Element() > dat) {
+      curr->leftChild = Insert(curr->leftChild, std::move(dat));
+    } else if (curr->Element() < dat) {
+      curr->rightChild = Insert(curr->rightChild, std::move(dat));
+    }
+  }
+  return curr;
+}
+
+template <typename Data>
 typename BST<Data>::NodeLnk *BST<Data>::Remove(typename BST<Data>::NodeLnk *curr,
                                                const Data &dat) {
   if (curr != nullptr) {
@@ -374,7 +390,7 @@ const Data BST<Data>::GetNDeleteMin(typename BST<Data>::NodeLnk *node,
     swapChild(parent, node, right);
     return dat;
   }
-  return GetNDeleteMin(node->rightChild, node);
+  return GetNDeleteMin(node->leftChild, node);
 }
 
 template <typename Data>

@@ -134,6 +134,10 @@ inline void BinaryTree<Data>::InOrderTraverse(TraverseFun func, const Node &node
 template <typename Data>
 inline void BinaryTree<Data>::BreadthTraverse(TraverseFun func) const {
 
+  if (!size) {
+    return;
+  }
+
   QueueLst<const Node *> queue{};
 
   queue.Enqueue(&Root());
@@ -224,6 +228,10 @@ inline void MutableBinaryTree<Data>::InOrderMap(MapFun func, MutableNode &node) 
 }
 
 template <typename Data> inline void MutableBinaryTree<Data>::BreadthMap(MapFun func) {
+
+  if (!size) {
+    return;
+  }
 
   QueueLst<MutableNode *> queue{};
 

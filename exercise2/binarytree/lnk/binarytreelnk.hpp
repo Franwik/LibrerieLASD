@@ -51,7 +51,7 @@ protected:
     /* ********************************************************************** */
 
     // Copy assignment
-    NodeLnk &operator=(NodeLnk &);
+    NodeLnk &operator=(const NodeLnk &);
 
     // Move assignment
     NodeLnk &operator=(NodeLnk &&) noexcept;

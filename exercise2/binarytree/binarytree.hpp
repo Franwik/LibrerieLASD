@@ -249,7 +249,7 @@ private:
   // ...
 
 protected:
-  const typename BinaryTree<Data>::Node *root;
+  const typename BinaryTree<Data>::Node *root{nullptr};
   StackLst<const typename BinaryTree<Data>::Node *> stack{};
 
 public:
@@ -362,7 +362,7 @@ private:
   // ...
 
 protected:
-  const typename BinaryTree<Data>::Node *root;
+  const typename BinaryTree<Data>::Node *root{nullptr};
   StackLst<const typename BinaryTree<Data>::Node *> stack{};
 
 public:
@@ -482,7 +482,7 @@ private:
   // ...
 
 protected:
-  const typename BinaryTree<Data>::Node *root;
+  const typename BinaryTree<Data>::Node *root{nullptr};
   StackLst<const typename BinaryTree<Data>::Node *> stack{};
 
 public:
@@ -602,7 +602,7 @@ private:
   // ...
 
 protected:
-  const typename BinaryTree<Data>::Node *root;
+  const typename BinaryTree<Data>::Node *root{nullptr};
   QueueLst<const typename BinaryTree<Data>::Node *> queue{};
 
 public:
