@@ -182,23 +182,23 @@ template <typename Data> BinaryTreeVec<Data>::~BinaryTreeVec() {
 
 template <typename Data>
 BinaryTreeVec<Data> &BinaryTreeVec<Data>::operator=(const BinaryTreeVec<Data> &other) {
-  std::cout << "sono entrato nel copy" << std::endl;
   BinaryTreeVec<Data> temp{other};
   std::swap(temp, *this);
   for (unsigned long i = 0; i < size; i++) {
     vec[i]->tree = this;
   }
-  std::cout << "sto uscendo dal copy" << std::endl;
   return *this;
 }
 
 template <typename Data>
 BinaryTreeVec<Data> &
 BinaryTreeVec<Data>::operator=(BinaryTreeVec<Data> &&other) noexcept {
-  std::cout << "sono entrato nel move" << std::endl;
   std::swap(size, other.size);
   std::swap(vec, other.vec);
-  for (unsigned long i = 0; i < size; i++) {
+  for (unsigned long i = 0; i < other.vec.Size(); i++) {
+    other.vec[i]->tree = &other;
+  }
+  for (unsigned long i = 0; i < vec.Size(); i++) {
     vec[i]->tree = this;
   }
   return *this;

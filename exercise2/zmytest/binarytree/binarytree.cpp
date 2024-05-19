@@ -45,9 +45,9 @@ void my_binarytree_lnk(unsigned int &testnum, unsigned int &testerr) {
       SetAt(loctestnum, loctesterr, vec, true, i, i + 5);
     }
 
-    lasd::BinaryTreeVec<int> copbt1(vec);
+    lasd::BinaryTreeLnk<int> copbt1(vec);
 
-    lasd::BinaryTreeVec<int> copbt2(copbt1);
+    lasd::BinaryTreeLnk<int> copbt2(copbt1);
 
     EqualBT(loctestnum, loctesterr, copbt1, copbt2);
 
@@ -80,7 +80,7 @@ void my_binarytree_lnk(unsigned int &testnum, unsigned int &testerr) {
       cout << data << " ";
     });
 
-    lasd::BinaryTreeVec<int> movbt(std::move(vec));
+    lasd::BinaryTreeLnk<int> movbt(std::move(vec));
     Size(loctestnum, loctesterr, vec, true, 5);
     Traverse(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
     Size(loctestnum, loctesterr, movbt, true, 5);
@@ -90,22 +90,21 @@ void my_binarytree_lnk(unsigned int &testnum, unsigned int &testerr) {
     NonEqualBT(loctestnum, loctesterr, copbt1, movbt);
     EqualBT(loctestnum, loctesterr, copbt2, movbt);
 
-    lasd::BinaryTreeVec<int> copbt3;
+    lasd::BinaryTreeLnk<int> copbt3;
     Empty(loctestnum, loctesterr, copbt3, true);
 
-    // TODO: fix
-    // copbt3 = movbt;
+    copbt3 = movbt;
 
-    // Empty(loctestnum, loctesterr, copbt3, false);
-    // EqualBT(loctestnum, loctesterr, copbt3, movbt);
-    // NonEqualBT(loctestnum, loctesterr, copbt3, copbt1);
-    // Traverse(loctestnum, loctesterr, copbt3, true, &TraversePrint<int>);
+    Empty(loctestnum, loctesterr, copbt3, false);
+    EqualBT(loctestnum, loctesterr, copbt3, movbt);
+    NonEqualBT(loctestnum, loctesterr, copbt3, copbt1);
+    Traverse(loctestnum, loctesterr, copbt3, true, &TraversePrint<int>);
 
-    // movbt = std::move(copbt1);
+    movbt = std::move(copbt1);
 
-    // cout << "si rompe qui?" << endl;
-    // NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
-    // EqualBT(loctestnum, loctesterr, copbt3, copbt1);
+    cout << "si rompe qui?" << endl;
+    NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
+    EqualBT(loctestnum, loctesterr, copbt3, copbt1);
 
     copbt1.Clear();
     Empty(loctestnum, loctesterr, copbt1, true);
@@ -243,20 +242,19 @@ void my_binarytree_vec(unsigned int &testnum, unsigned int &testerr) {
     lasd::BinaryTreeVec<int> copbt3;
     Empty(loctestnum, loctesterr, copbt3, true);
 
-    // TODO: fix
-    // copbt3 = movbt;
+    copbt3 = movbt;
 
-    // Empty(loctestnum, loctesterr, copbt3, false);
-    // EqualBT(loctestnum, loctesterr, copbt3, movbt);
-    // NonEqualBT(loctestnum, loctesterr, copbt3, copbt1);
-    // Traverse(loctestnum, loctesterr, copbt3, true, &TraversePrint<int>);
+    Empty(loctestnum, loctesterr, copbt3, false);
+    EqualBT(loctestnum, loctesterr, copbt3, movbt);
+    NonEqualBT(loctestnum, loctesterr, copbt3, copbt1);
+    Traverse(loctestnum, loctesterr, copbt3, true, &TraversePrint<int>);
 
-    // movbt = std::move(copbt1);
+    movbt = std::move(copbt1);
 
-    // cout << "si rompe qui?" << endl;
-    // EqualBT(loctestnum, loctesterr, copbt3, copbt1);
-    // NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
-    // cout << "sì, colpa di move assignment" << endl;
+    cout << "si rompe qui?" << endl;
+    EqualBT(loctestnum, loctesterr, copbt3, copbt1);
+    NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
+    cout << "sì, colpa di move assignment" << endl;
 
     copbt1.Clear();
     Empty(loctestnum, loctesterr, copbt1, true);
