@@ -11,7 +11,7 @@ using namespace std;
 
 int main() {
 
-  int choose;
+  int choose{2};
 
   cout << "#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ WELCOME "
           "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#"
