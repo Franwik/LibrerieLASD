@@ -129,7 +129,7 @@ void my_bst_int(unsigned int &testnum, unsigned int &testerr) {
     lasd::BST<int> movbst1(std::move(vec));
     TraverseInOrder(loctestnum, loctesterr, movbst1, true, &TraversePrint<int>);
     Traverse(loctestnum, loctesterr, vec, true, &TraversePrint<int>);
-    
+
     EqualBST(loctestnum, loctesterr, copbst1, movbst1);
 
     lasd::BST<int> copbst2(copbst1);
@@ -139,6 +139,118 @@ void my_bst_int(unsigned int &testnum, unsigned int &testerr) {
     TraverseInOrder(loctestnum, loctesterr, movbst1, true, &TraversePrint<int>);
     TraverseInOrder(loctestnum, loctesterr, movbst2, true, &TraversePrint<int>);
     NonEqualBST(loctestnum, loctesterr, movbst1, movbst2);
+
+    lasd::BTPreOrderIterator<int> PreItr1(copbst1);
+    GetItrValue(loctestnum, loctesterr, PreItr1, true, 3);
+    ++PreItr1;
+    GetItrValue(loctestnum, loctesterr, PreItr1, true, 2);
+    ++PreItr1;
+    GetItrValue(loctestnum, loctesterr, PreItr1, true, 7);
+    Terminated(loctestnum, loctesterr, PreItr1, false);
+
+    lasd::BTPreOrderIterator<int> PreItr2(PreItr1);
+
+    GetItrValue(loctestnum, loctesterr, PreItr2, true, 7);
+    PreItr2.Reset();
+    GetItrValue(loctestnum, loctesterr, PreItr2, true, 3);
+
+    ++PreItr1;
+    GetItrValue(loctestnum, loctesterr, PreItr1, true, 5);
+    ++PreItr1;
+    GetItrValue(loctestnum, loctesterr, PreItr1, true, 9);
+    ++PreItr1;
+    Terminated(loctestnum, loctesterr, PreItr1, true);
+    PreItr1.Reset();
+
+    lasd::BTPreOrderIterator<int> PreItr3(std::move(PreItr1));
+
+    Terminated(loctestnum, loctesterr, PreItr1, true);
+    Terminated(loctestnum, loctesterr, PreItr3, false);
+    GetItrValue(loctestnum, loctesterr, PreItr3, true, 3);
+
+    lasd::BTPostOrderIterator<int> PostItr1(copbst1);
+    GetItrValue(loctestnum, loctesterr, PostItr1, true, 2);
+    ++PostItr1;
+    GetItrValue(loctestnum, loctesterr, PostItr1, true, 5);
+    ++PostItr1;
+    GetItrValue(loctestnum, loctesterr, PostItr1, true, 9);
+    Terminated(loctestnum, loctesterr, PostItr1, false);
+
+    lasd::BTPostOrderIterator<int> PostItr2(PostItr1);
+
+    GetItrValue(loctestnum, loctesterr, PostItr2, true, 9);
+    PostItr2.Reset();
+    GetItrValue(loctestnum, loctesterr, PostItr2, true, 2);
+
+    ++PostItr1;
+    GetItrValue(loctestnum, loctesterr, PostItr1, true, 7);
+    ++PostItr1;
+    GetItrValue(loctestnum, loctesterr, PostItr1, true, 3);
+    ++PostItr1;
+    Terminated(loctestnum, loctesterr, PostItr1, true);
+    PostItr1.Reset();
+
+    lasd::BTPostOrderIterator<int> PostItr3(std::move(PostItr1));
+
+    Terminated(loctestnum, loctesterr, PostItr1, true);
+    Terminated(loctestnum, loctesterr, PostItr3, false);
+    GetItrValue(loctestnum, loctesterr, PostItr3, true, 2);
+
+    lasd::BTInOrderIterator<int> InItr1(copbst1);
+    GetItrValue(loctestnum, loctesterr, InItr1, true, 2);
+    ++InItr1;
+    GetItrValue(loctestnum, loctesterr, InItr1, true, 3);
+    ++InItr1;
+    GetItrValue(loctestnum, loctesterr, InItr1, true, 5);
+    Terminated(loctestnum, loctesterr, InItr1, false);
+
+    lasd::BTInOrderIterator<int> InItr2(InItr1);
+
+    GetItrValue(loctestnum, loctesterr, InItr2, true, 5);
+    InItr2.Reset();
+    GetItrValue(loctestnum, loctesterr, InItr2, true, 2);
+
+    ++InItr1;
+    GetItrValue(loctestnum, loctesterr, InItr1, true, 7);
+    ++InItr1;
+    GetItrValue(loctestnum, loctesterr, InItr1, true, 9);
+    ++InItr1;
+    Terminated(loctestnum, loctesterr, InItr1, true);
+    InItr1.Reset();
+
+    lasd::BTInOrderIterator<int> InItr3(std::move(InItr1));
+
+    Terminated(loctestnum, loctesterr, InItr1, true);
+    Terminated(loctestnum, loctesterr, InItr3, false);
+    GetItrValue(loctestnum, loctesterr, InItr3, true, 2);
+
+    lasd::BTBreadthIterator<int> BreadthItr1(copbst1);
+    GetItrValue(loctestnum, loctesterr, BreadthItr1, true, 3);
+    ++BreadthItr1;
+    GetItrValue(loctestnum, loctesterr, BreadthItr1, true, 2);
+    ++BreadthItr1;
+    GetItrValue(loctestnum, loctesterr, BreadthItr1, true, 7);
+    Terminated(loctestnum, loctesterr, BreadthItr1, false);
+
+    lasd::BTBreadthIterator<int> BreadthItr2(BreadthItr1);
+
+    GetItrValue(loctestnum, loctesterr, BreadthItr2, true, 7);
+    BreadthItr2.Reset();
+    GetItrValue(loctestnum, loctesterr, BreadthItr2, true, 3);
+
+    ++BreadthItr1;
+    GetItrValue(loctestnum, loctesterr, BreadthItr1, true, 5);
+    ++BreadthItr1;
+    GetItrValue(loctestnum, loctesterr, BreadthItr1, true, 9);
+    ++BreadthItr1;
+    Terminated(loctestnum, loctesterr, BreadthItr1, true);
+    BreadthItr1.Reset();
+
+    lasd::BTBreadthIterator<int> BreadthItr3(std::move(BreadthItr1));
+
+    Terminated(loctestnum, loctesterr, BreadthItr1, true);
+    Terminated(loctestnum, loctesterr, BreadthItr3, false);
+    GetItrValue(loctestnum, loctesterr, BreadthItr3, true, 3);
 
   } catch (...) {
     loctestnum++;
