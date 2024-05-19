@@ -102,7 +102,6 @@ void my_binarytree_lnk(unsigned int &testnum, unsigned int &testerr) {
 
     movbt = std::move(copbt1);
 
-    cout << "si rompe qui?" << endl;
     NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
     EqualBT(loctestnum, loctesterr, copbt3, copbt1);
 
@@ -251,10 +250,8 @@ void my_binarytree_vec(unsigned int &testnum, unsigned int &testerr) {
 
     movbt = std::move(copbt1);
 
-    cout << "si rompe qui?" << endl;
     EqualBT(loctestnum, loctesterr, copbt3, copbt1);
     NonEqualBT(loctestnum, loctesterr, copbt3, movbt);
-    cout << "sì, colpa di move assignment" << endl;
 
     copbt1.Clear();
     Empty(loctestnum, loctesterr, copbt1, true);
