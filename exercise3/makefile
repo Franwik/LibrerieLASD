@@ -1,8 +1,8 @@
 
 cc = g++
-cflags = -Wall -pedantic -O3 -std=c++20 -fsanitize=address
+cflags = -Wall -pedantic -O3 -std=c++20 #-fsanitize=address
 
-objects = main.o test.o mytest.o container.o exc1as.o exc1af.o exc1bs.o exc1bf.o exc2as.o exc2af.o exc2bs.o exc2bf.o exc3f.o exc3s.o
+objects = main.o test.o mytest.o container.o exc1as.o exc1af.o exc1bs.o exc1bf.o exc2as.o exc2af.o exc2bs.o exc2bf.o exc3f.o exc3s.o myclsadr.o myopnadr.o
 
 libcon = container/container.hpp container/testable.hpp container/traversable.cpp container/traversable.hpp container/mappable.cpp container/mappable.hpp container/dictionary.cpp container/dictionary.hpp container/linear.cpp container/linear.hpp
 
@@ -65,3 +65,9 @@ exc3s.o: $(libexc3) zlasdtest/exercise3/simpletest.cpp
 
 exc3f.o: $(libexc3) zlasdtest/exercise3/fulltest.cpp
 	$(cc) $(cflags) -c zlasdtest/exercise3/fulltest.cpp -o exc3f.o
+
+myclsadr.o: $(libexc1b) zmytest/hashtable/clsadr/htclsadr.hpp zmytest/hashtable/clsadr/htclsadr.cpp
+	$(cc) $(cflags) -c zmytest/hashtable/clsadr/htclsadr.cpp -o myclsadr.o
+
+myopnadr.o: $(libexc1b) zmytest/hashtable/opnadr/htopnadr.hpp zmytest/hashtable/opnadr/htopnadr.cpp
+	$(cc) $(cflags) -c zmytest/hashtable/opnadr/htopnadr.cpp -o myopnadr.o
