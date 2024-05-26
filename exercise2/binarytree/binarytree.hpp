@@ -349,7 +349,7 @@ public:
 
   // Specific member functions (inherited from MutableIterator)
 
-  Data &operator*() const override;
+  Data &operator*() override;
 };
 
 /* ************************************************************************** */
@@ -469,7 +469,7 @@ public:
 
   // Specific member functions (inherited from MutableIterator)
 
-  Data &operator*() const override;
+  Data &operator*() override;
 };
 
 /* ************************************************************************** */
@@ -589,7 +589,7 @@ public:
 
   // Specific member functions (inherited from MutableIterator)
 
-  Data &operator*() const override;
+  Data &operator*() override;
 };
 
 /* ************************************************************************** */
@@ -704,7 +704,7 @@ public:
 
   // Specific member functions (inherited from MutableIterator)
 
-  Data &operator*() const override;
+  Data &operator*() override;
 };
 
 /* ************************************************************************** */

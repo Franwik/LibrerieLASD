@@ -258,7 +258,7 @@ template <typename Data> inline void MutableBinaryTree<Data>::BreadthMap(MapFun 
 // BTPreOrderIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 BTPreOrderIterator<Data>::BTPreOrderIterator(const BinaryTree<Data> &tree) {
@@ -355,7 +355,7 @@ template <typename Data> inline void BTPreOrderIterator<Data>::Reset() noexcept 
 // BTPreOrderMutableIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 inline BTPreOrderMutableIterator<Data>::BTPreOrderMutableIterator(
@@ -404,8 +404,8 @@ inline bool BTPreOrderMutableIterator<Data>::operator!=(
   return !(*this == other);
 }
 
-template <typename Data> Data &BTPreOrderMutableIterator<Data>::operator*() const {
-  return BTPreOrderIterator<Data>::operator*();
+template <typename Data> Data &BTPreOrderMutableIterator<Data>::operator*() {
+  return const_cast<Data &>(BTPreOrderIterator<Data>::operator*());
 }
 
 /* ************************************************************************** */
@@ -413,7 +413,7 @@ template <typename Data> Data &BTPreOrderMutableIterator<Data>::operator*() cons
 // BTPostOrderIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 BTPostOrderIterator<Data>::BTPostOrderIterator(const BinaryTree<Data> &tree) {
@@ -523,7 +523,7 @@ void BTPostOrderIterator<Data>::loadToMostLeftLeaf(
 // BTPostOrderMutableIterator
 /* ******************************************Pre******************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 inline BTPostOrderMutableIterator<Data>::BTPostOrderMutableIterator(
@@ -572,8 +572,8 @@ inline bool BTPostOrderMutableIterator<Data>::operator!=(
   return !(*this == other);
 }
 
-template <typename Data> Data &BTPostOrderMutableIterator<Data>::operator*() const {
-  return BTPostOrderIterator<Data>::operator*();
+template <typename Data> Data &BTPostOrderMutableIterator<Data>::operator*() {
+  return const_cast<Data &>(BTPostOrderIterator<Data>::operator*());
 }
 
 /* ************************************************************************** */
@@ -581,7 +581,7 @@ template <typename Data> Data &BTPostOrderMutableIterator<Data>::operator*() con
 // BTInOrderIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 BTInOrderIterator<Data>::BTInOrderIterator(const BinaryTree<Data> &tree) {
@@ -687,7 +687,7 @@ void BTInOrderIterator<Data>::loadToLastLeft(
 // BTInOrderMutableIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 inline BTInOrderMutableIterator<Data>::BTInOrderMutableIterator(
@@ -736,8 +736,8 @@ inline bool BTInOrderMutableIterator<Data>::operator!=(
   return !(*this == other);
 }
 
-template <typename Data> Data &BTInOrderMutableIterator<Data>::operator*() const {
-  return BTInOrderIterator<Data>::operator*();
+template <typename Data> Data &BTInOrderMutableIterator<Data>::operator*() {
+  return const_cast<Data &>(BTInOrderIterator<Data>::operator*());
 }
 
 /* ************************************************************************** */
@@ -842,7 +842,7 @@ template <typename Data> inline void BTBreadthIterator<Data>::Reset() noexcept {
 // BTBreadthMutableIterator
 /* ************************************************************************** */
 
-// Contstructors
+// Constructors
 
 template <typename Data>
 inline BTBreadthMutableIterator<Data>::BTBreadthMutableIterator(
@@ -891,8 +891,8 @@ inline bool BTBreadthMutableIterator<Data>::operator!=(
   return !(*this == other);
 }
 
-template <typename Data> Data &BTBreadthMutableIterator<Data>::operator*() const {
-  return BTBreadthIterator<Data>::operator*();
+template <typename Data> Data &BTBreadthMutableIterator<Data>::operator*() {
+  return const_cast<Data &>(BTBreadthIterator<Data>::operator*());
 }
 
 /* ************************************************************************** */

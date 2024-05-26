@@ -170,6 +170,28 @@ void my_binarytree_lnk(unsigned int &testnum, unsigned int &testerr) {
     Terminated(loctestnum, loctesterr, PostItr3, false);
     GetItrValue(loctestnum, loctesterr, PostItr3, true, 8);
 
+    lasd::BTPreOrderMutableIterator<int> mutpreitr1(copbt2);
+
+    GetItrValue(loctestnum, loctesterr, mutpreitr1, true, 5);
+    *mutpreitr1 = 10;
+    GetItrValue(loctestnum, loctesterr, mutpreitr1, true, 10);
+
+    lasd::BTPreOrderMutableIterator<int> mutpreitr2(std::move(mutpreitr1));
+    Terminated(loctestnum, loctesterr, mutpreitr2, false);
+
+    GetItrValue(loctestnum, loctesterr, mutpreitr2, true, 10);
+    *mutpreitr2 = 5;
+    GetItrValue(loctestnum, loctesterr, mutpreitr2, true, 5);
+
+    lasd::BTInOrderMutableIterator<int> mutinitr1(copbt2);
+    lasd::BTInOrderMutableIterator<int> mutinitr2(std::move(mutinitr1));
+
+    lasd::BTPostOrderMutableIterator<int> mutpostitr1(copbt2);
+    lasd::BTPostOrderMutableIterator<int> mutpostitr2(std::move(mutpostitr1));
+
+    lasd::BTBreadthMutableIterator<int> mutbreadthitr1(copbt2);
+    lasd::BTBreadthMutableIterator<int> mutbreadthitr2(std::move(mutbreadthitr1));
+
   } catch (...) {
     loctestnum++;
     loctesterr++;
