@@ -8,7 +8,8 @@ namespace lasd {
 
 // Constructors & Destructor
 
-template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const Data &dat) {
+template <typename Data>
+BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const Data &dat) {
   element = dat;
 }
 
@@ -16,7 +17,8 @@ template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(Data &&dat) {
   std::swap(element, dat);
 }
 
-template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const NodeLnk &other) {
+template <typename Data>
+BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const NodeLnk &other) {
   element = other.element;
   if (other.HasLeftChild()) {
     leftChild = new NodeLnk(*other.leftChild);
@@ -26,7 +28,8 @@ template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(const NodeLnk &ot
   }
 }
 
-template <typename Data> BinaryTreeLnk<Data>::NodeLnk::NodeLnk(NodeLnk &&other) noexcept {
+template <typename Data>
+BinaryTreeLnk<Data>::NodeLnk::NodeLnk(NodeLnk &&other) noexcept {
   std::swap(element, other.element);
   std::swap(leftChild, other.leftChild);
   std::swap(rightChild, other.rightChild);
@@ -63,7 +66,8 @@ const Data &BinaryTreeLnk<Data>::NodeLnk::Element() const noexcept {
   return element;
 }
 
-template <typename Data> Data &BinaryTreeLnk<Data>::NodeLnk::Element() noexcept {
+template <typename Data>
+Data &BinaryTreeLnk<Data>::NodeLnk::Element() noexcept {
   return element;
 }
 
@@ -78,7 +82,7 @@ inline bool BinaryTreeLnk<Data>::NodeLnk::HasRightChild() const noexcept {
 }
 
 template <typename Data>
-inline const typename BinaryTree<Data>::Node &
+inline const BinaryTreeLnk<Data>::Node &
 BinaryTreeLnk<Data>::NodeLnk::LeftChild() const {
   if (leftChild == nullptr) {
     throw std::out_of_range("Left child doesn't exists");
@@ -87,7 +91,7 @@ BinaryTreeLnk<Data>::NodeLnk::LeftChild() const {
 }
 
 template <typename Data>
-inline const typename BinaryTree<Data>::Node &
+inline const BinaryTreeLnk<Data>::Node &
 BinaryTreeLnk<Data>::NodeLnk::RightChild() const {
   if (rightChild == nullptr) {
     throw std::out_of_range("Right child doesn't exists");
@@ -96,7 +100,7 @@ BinaryTreeLnk<Data>::NodeLnk::RightChild() const {
 }
 
 template <typename Data>
-inline typename MutableBinaryTree<Data>::MutableNode &
+inline BinaryTreeLnk<Data>::MutableNode &
 BinaryTreeLnk<Data>::NodeLnk::LeftChild() {
   if (leftChild == nullptr) {
     throw std::out_of_range("Left child doesn't exists");
@@ -105,7 +109,7 @@ BinaryTreeLnk<Data>::NodeLnk::LeftChild() {
 }
 
 template <typename Data>
-inline typename MutableBinaryTree<Data>::MutableNode &
+inline BinaryTreeLnk<Data>::MutableNode &
 BinaryTreeLnk<Data>::NodeLnk::RightChild() {
   if (rightChild == nullptr) {
     throw std::out_of_range("Right child doesn't exists");
@@ -162,7 +166,8 @@ BinaryTreeLnk<Data>::BinaryTreeLnk(MappableContainer<Data> &&con) {
   size = con.Size();
 }
 
-template <typename Data> BinaryTreeLnk<Data>::BinaryTreeLnk(const BinaryTreeLnk &other) {
+template <typename Data>
+BinaryTreeLnk<Data>::BinaryTreeLnk(const BinaryTreeLnk &other) {
   if (other.size != 0) {
     size = other.size;
     root = new NodeLnk(*other.root);
@@ -175,12 +180,15 @@ BinaryTreeLnk<Data>::BinaryTreeLnk(BinaryTreeLnk &&other) noexcept {
   std::swap(root, other.root);
 }
 
-template <typename Data> inline BinaryTreeLnk<Data>::~BinaryTreeLnk() { delete root; }
+template <typename Data> inline BinaryTreeLnk<Data>::~BinaryTreeLnk() {
+  delete root;
+}
 
 // Operators
 
 template <typename Data>
-BinaryTreeLnk<Data> &BinaryTreeLnk<Data>::operator=(const BinaryTreeLnk<Data> &other) {
+BinaryTreeLnk<Data> &
+BinaryTreeLnk<Data>::operator=(const BinaryTreeLnk<Data> &other) {
   BinaryTreeLnk<Data> temp{other};
   std::swap(temp, *this);
   return *this;
@@ -195,19 +203,21 @@ BinaryTreeLnk<Data>::operator=(BinaryTreeLnk<Data> &&other) noexcept {
 }
 
 template <typename Data>
-inline bool BinaryTreeLnk<Data>::operator==(const BinaryTreeLnk &other) const noexcept {
+inline bool
+BinaryTreeLnk<Data>::operator==(const BinaryTreeLnk &other) const noexcept {
   return BinaryTree<Data>::operator==(other);
 }
 
 template <typename Data>
-inline bool BinaryTreeLnk<Data>::operator!=(const BinaryTreeLnk &other) const noexcept {
+inline bool
+BinaryTreeLnk<Data>::operator!=(const BinaryTreeLnk &other) const noexcept {
   return !(*this == other);
 }
 
 // Specific member functions
 
 template <typename Data>
-inline const typename BinaryTree<Data>::Node &BinaryTreeLnk<Data>::Root() const {
+inline const BinaryTreeLnk<Data>::Node &BinaryTreeLnk<Data>::Root() const {
   if (root == nullptr) {
     throw std::length_error("Tree is empty");
   }
@@ -215,7 +225,7 @@ inline const typename BinaryTree<Data>::Node &BinaryTreeLnk<Data>::Root() const 
 }
 
 template <typename Data>
-inline typename MutableBinaryTree<Data>::MutableNode &BinaryTreeLnk<Data>::Root() {
+inline BinaryTreeLnk<Data>::MutableNode &BinaryTreeLnk<Data>::Root() {
   if (root == nullptr) {
     throw std::length_error("Tree is empty");
   }

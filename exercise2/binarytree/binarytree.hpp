@@ -197,7 +197,7 @@ public:
   /* ************************************************************************ */
 
   // Specific member functions
-
+  using BinaryTree<Data>::Root;
   virtual MutableNode &Root() = 0;
 
   /* ************************************************************************ */
@@ -212,25 +212,29 @@ public:
 
   // Specific member function (inherited from PreOrderMappableContainer)
 
-  inline void PreOrderMap(MapFun) override; // Override PreOrderMappableContainer member
+  inline void
+      PreOrderMap(MapFun) override; // Override PreOrderMappableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from PostOrderMappableContainer)
 
-  inline void PostOrderMap(MapFun) override; // Override PostOrderMappableContainer member
+  inline void PostOrderMap(
+      MapFun) override; // Override PostOrderMappableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from InOrderMappableContainer)
 
-  inline void InOrderMap(MapFun) override; // Override InOrderMappableContainer member
+  inline void
+      InOrderMap(MapFun) override; // Override InOrderMappableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from BreadthMappableContainer)
 
-  inline void BreadthMap(MapFun) override; // Override BreadthMappableContainer member
+  inline void
+      BreadthMap(MapFun) override; // Override BreadthMappableContainer member
 
 protected:
   // Auxiliary functions, if necessary!
