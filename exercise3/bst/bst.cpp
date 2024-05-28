@@ -37,7 +37,8 @@ template <typename Data> BST<Data> &BST<Data>::operator=(BST &&other) noexcept {
   return *this;
 }
 
-template <typename Data> bool BST<Data>::operator==(const BST &other) const noexcept {
+template <typename Data>
+bool BST<Data>::operator==(const BST &other) const noexcept {
   if (size != other.size) {
     return false;
   }
@@ -108,7 +109,8 @@ template <typename Data> void BST<Data>::RemoveMax() {
   Remove(Max());
 }
 
-template <typename Data> const Data &BST<Data>::Predecessor(const Data &dat) const {
+template <typename Data>
+const Data &BST<Data>::Predecessor(const Data &dat) const {
   const Node *predecessor{Predecessor(root, dat, nullptr)};
   if (predecessor == nullptr) {
     throw std::length_error("Predecessor not found");
@@ -126,7 +128,8 @@ template <typename Data> void BST<Data>::RemovePredecessor(const Data &dat) {
   Remove(Predecessor(dat));
 }
 
-template <typename Data> const Data &BST<Data>::Successor(const Data &dat) const {
+template <typename Data>
+const Data &BST<Data>::Successor(const Data &dat) const {
   const Node *successor{Successor(root, dat, nullptr)};
   if (successor == nullptr) {
     throw std::length_error("Successor not found");
@@ -146,10 +149,10 @@ template <typename Data> void BST<Data>::RemoveSuccessor(const Data &dat) {
 
 // Specific member function (inherited from BinaryTree)
 
-template <typename Data>
-inline const typename BinaryTree<Data>::Node &BST<Data>::Root() const {
-  return BinaryTreeLnk<Data>::Root();
-}
+// template <typename Data>
+// inline const typename BinaryTree<Data>::Node &BST<Data>::Root() const {
+//   return BinaryTreeLnk<Data>::Root();
+// }
 
 // Specific member functions (inherited from DictionaryContainer)
 
@@ -173,13 +176,16 @@ template <typename Data> bool BST<Data>::Remove(const Data &dat) {
 
 // Specific member functions (inherited from TestableContainer)
 
-template <typename Data> bool BST<Data>::Exists(const Data &dat) const noexcept {
+template <typename Data>
+bool BST<Data>::Exists(const Data &dat) const noexcept {
   return Search(root, dat);
 }
 
 // Specific member function (inherited from ClearableContainer)
 
-template <typename Data> void BST<Data>::Clear() { return BinaryTreeLnk<Data>::Clear(); }
+template <typename Data> void BST<Data>::Clear() {
+  return BinaryTreeLnk<Data>::Clear();
+}
 
 // Auxiliary functions
 
@@ -236,9 +242,9 @@ BST<Data>::Predecessor(const typename BST<Data>::NodeLnk *curr, const Data &dat,
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::Predecessor(typename BST<Data>::NodeLnk *curr,
-                                                    const Data &dat,
-                                                    typename BST<Data>::NodeLnk *guess) {
+typename BST<Data>::NodeLnk *
+BST<Data>::Predecessor(typename BST<Data>::NodeLnk *curr, const Data &dat,
+                       typename BST<Data>::NodeLnk *guess) {
   if (curr != nullptr) {
     if (curr->Element() < dat) {
       return Predecessor(curr->rightChild, dat, curr);
@@ -264,9 +270,9 @@ BST<Data>::Successor(const typename BST<Data>::NodeLnk *curr, const Data &dat,
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::Successor(typename BST<Data>::NodeLnk *curr,
-                                                  const Data &dat,
-                                                  typename BST<Data>::NodeLnk *guess) {
+typename BST<Data>::NodeLnk *
+BST<Data>::Successor(typename BST<Data>::NodeLnk *curr, const Data &dat,
+                     typename BST<Data>::NodeLnk *guess) {
   if (curr != nullptr) {
     if (curr->Element() > dat) {
       return Successor(curr->leftChild, dat, curr);
@@ -278,7 +284,8 @@ typename BST<Data>::NodeLnk *BST<Data>::Successor(typename BST<Data>::NodeLnk *c
 }
 
 template <typename Data>
-bool BST<Data>::Search(const typename BST<Data>::NodeLnk *curr, const Data &dat) const {
+bool BST<Data>::Search(const typename BST<Data>::NodeLnk *curr,
+                       const Data &dat) const {
   if (curr == nullptr) {
     return false;
   }
@@ -306,8 +313,8 @@ bool BST<Data>::Search(typename BST<Data>::NodeLnk *curr, const Data &dat) {
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr,
-                                               const Data &dat) {
+typename BST<Data>::NodeLnk *
+BST<Data>::Insert(typename BST<Data>::NodeLnk *curr, const Data &dat) {
   if (curr == nullptr) {
     curr = new NodeLnk(dat);
     size++;
@@ -322,8 +329,8 @@ typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr,
-                                               Data &&dat) {
+typename BST<Data>::NodeLnk *
+BST<Data>::Insert(typename BST<Data>::NodeLnk *curr, Data &&dat) {
   if (curr == nullptr) {
     curr = new NodeLnk(std::move(dat));
     size++;
@@ -338,8 +345,8 @@ typename BST<Data>::NodeLnk *BST<Data>::Insert(typename BST<Data>::NodeLnk *curr
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::Remove(typename BST<Data>::NodeLnk *curr,
-                                               const Data &dat) {
+typename BST<Data>::NodeLnk *
+BST<Data>::Remove(typename BST<Data>::NodeLnk *curr, const Data &dat) {
   if (curr != nullptr) {
     if (curr->Element() > dat) {
       curr->leftChild = Remove(curr->leftChild, dat);
@@ -354,7 +361,8 @@ typename BST<Data>::NodeLnk *BST<Data>::Remove(typename BST<Data>::NodeLnk *curr
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::DeleteData(typename BST<Data>::NodeLnk *node) {
+typename BST<Data>::NodeLnk *
+BST<Data>::DeleteData(typename BST<Data>::NodeLnk *node) {
   if (node->leftChild == nullptr) {
     node = skipRight(node);
   } else if (node->rightChild == nullptr) {
@@ -366,7 +374,8 @@ typename BST<Data>::NodeLnk *BST<Data>::DeleteData(typename BST<Data>::NodeLnk *
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::skipRight(typename BST<Data>::NodeLnk *node) {
+typename BST<Data>::NodeLnk *
+BST<Data>::skipRight(typename BST<Data>::NodeLnk *node) {
   NodeLnk *right{node->rightChild};
   node->rightChild = nullptr;
   delete node;
@@ -374,7 +383,8 @@ typename BST<Data>::NodeLnk *BST<Data>::skipRight(typename BST<Data>::NodeLnk *n
 }
 
 template <typename Data>
-typename BST<Data>::NodeLnk *BST<Data>::skipLeft(typename BST<Data>::NodeLnk *node) {
+typename BST<Data>::NodeLnk *
+BST<Data>::skipLeft(typename BST<Data>::NodeLnk *node) {
   NodeLnk *left{node->leftChild};
   node->leftChild = nullptr;
   delete node;

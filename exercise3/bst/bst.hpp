@@ -88,7 +88,8 @@ public:
 
   // Specific member function (inherited from BinaryTree)
 
-  inline const Node &Root() const override;
+  // inline const Node &Root() const override;
+  using BinaryTreeLnk<Data>::Root;
 
   /* ************************************************************************ */
 
@@ -119,10 +120,12 @@ protected:
   const NodeLnk *Max(const NodeLnk *) const;
   NodeLnk *Max(NodeLnk *);
 
-  const NodeLnk *Predecessor(const NodeLnk *, const Data &, const NodeLnk *) const;
+  const NodeLnk *Predecessor(const NodeLnk *, const Data &,
+                             const NodeLnk *) const;
   NodeLnk *Predecessor(NodeLnk *, const Data &, NodeLnk *);
 
-  const NodeLnk *Successor(const NodeLnk *, const Data &, const NodeLnk *) const;
+  const NodeLnk *Successor(const NodeLnk *, const Data &,
+                           const NodeLnk *) const;
   NodeLnk *Successor(NodeLnk *, const Data &, NodeLnk *);
 
   bool Search(const NodeLnk *, const Data &) const;
