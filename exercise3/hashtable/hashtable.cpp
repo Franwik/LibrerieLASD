@@ -1,3 +1,5 @@
+#include <cmath>
+#include <string>
 
 namespace lasd {
 
@@ -6,12 +8,12 @@ namespace lasd {
 
 // Operators
 
-class Hashable<int> {
+template <> class Hashable<int> {
 public:
   unsigned long operator()(const int &dat) { return (dat * dat); }
 };
 
-class Hashable<double> {
+template <> class Hashable<double> {
 public:
   unsigned long operator()(const double &dat) {
     long integer = floor(dat);
@@ -20,7 +22,7 @@ public:
   }
 };
 
-class Hashable<string> {
+template <> class Hashable<std::string> {
 public:
   unsigned long operator()(const std::string &dat) {
     unsigned long hash = 5381;
@@ -30,6 +32,44 @@ public:
     return hash;
   }
 };
+
+/* ************************************************************************** */
+
+// HashTable
+/* ************************************************************************** */
+
+// Constructors
+
+template <typename Data> HashTable<Data>::HashTable() {
+  acoeff = dista(gen);
+  bcoeff = distb(gen);
+}
+
+template <typename Data> HashTable<Data>::HashTable(const HashTable &other) {
+  size = other.size;
+  acoeff = other.acoeff;
+  bcoeff = other.bcoeff;
+  tablesize = other.tablesize;
+}
+
+template <typename Data> HashTable<Data>::HashTable(HashTable &&other) noexcept {
+  std::swap(size, other.size);
+  std::swap(acoeff, other.acoeff);
+  std::swap(bcoeff, other.bcoeff);
+  std::swap(tablesize, other.tablesize);
+}
+
+// Auxiliary member functions
+
+template <typename Data>
+unsigned long HashTable<Data>::HashKey(const Data &dat) const noexcept {
+  return HashKey(enchash(dat));
+}
+
+template <typename Data>
+unsigned long HashTable<Data>::HashKey(unsigned long key) const noexcept {
+  return ((acoeff * 2 + 1) * key + (bcoeff * 2 + 1)) % tablesize;
+}
 
 /* ************************************************************************** */
 

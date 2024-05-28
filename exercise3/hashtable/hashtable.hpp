@@ -38,34 +38,57 @@ protected:
   unsigned long bcoeff = 0;
   static const unsigned long power = 1073741824;
 
+  std::default_random_engine gen = std::default_random_engine(std::random_device{}());
+  std::uniform_int_distribution<unsigned long> dista =
+      std::uniform_int_distribution<unsigned long>(1, power - 1);
+  std::uniform_int_distribution<unsigned long> distb =
+      std::uniform_int_distribution<unsigned long>(0, power - 1);
+
+  static const Hashable<Data> enchash;
+
+  unsigned long tablesize = 128;
+
 public:
   // Destructor
-  // ~HashTable() specifiers
+  virtual ~HashTable() = default;
 
-  /* ************************************************************************
-   */
+  /* ************************************************************************ */
+
+  // Default constructor
+  HashTable();
+
+  /* ************************************************************************ */
+
+  // Copy constructor
+  HashTable(const HashTable &);
+
+  // Move constructor
+  HashTable(HashTable &&) noexcept;
+
+  /* ************************************************************************ */
 
   // Copy assignment
-  // type operator=(argument); // Copy assignment of abstract types should
-  // not be possible.
+  HashTable &operator=(const HashTable &) = delete;
+  // Copy assignment of abstract types should not be possible.
 
   // Move assignment
-  // type operator=(argument); // Move assignment of abstract types
-  // should not be possible.
+  HashTable &operator=(HashTable &&) noexcept = delete;
+  // Move assignment of abstract types should not be possible.
 
-  /* ************************************************************************
-   */
+  /* ************************************************************************ */
 
   // Comparison operators
-  // type operator==(argument) specifiers; // Comparison of
-  // abstract hashtable is possible but not required. type
-  // operator!=(argument) specifiers; // Comparison of
-  // abstract hashtable is possible but not required.
+  bool operator==(const HashTable &) const noexcept = delete;
+  // Comparison of abstract hashtable is possible but not required.
+  bool operator!=(const HashTable &) const noexcept = delete;
+  // Comparison of abstract hashtable is possible but not required.
 
 protected:
   // Auxiliary member functions
 
-  // type HashKey(argument) specifiers;
+  virtual unsigned long HashKey(const Data &) const noexcept;
+
+  virtual unsigned long HashKey(unsigned long) const noexcept;
 };
 
 /* ************************************************************************** */

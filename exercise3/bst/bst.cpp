@@ -147,13 +147,6 @@ template <typename Data> void BST<Data>::RemoveSuccessor(const Data &dat) {
   Remove(Successor(dat));
 }
 
-// Specific member function (inherited from BinaryTree)
-
-// template <typename Data>
-// inline const typename BinaryTree<Data>::Node &BST<Data>::Root() const {
-//   return BinaryTreeLnk<Data>::Root();
-// }
-
 // Specific member functions (inherited from DictionaryContainer)
 
 template <typename Data> bool BST<Data>::Insert(const Data &dat) {
