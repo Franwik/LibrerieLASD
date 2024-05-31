@@ -6,71 +6,84 @@ namespace lasd {
 
 // Constructors
 
-// TODO: implement
 template <typename Data> HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize) {
-  std::cout << "costruttore" << std::endl;
+  while (newsize > tablesize) {
+    tablesize *= 2;
+  }
+  table.Resize(tablesize);
 }
 
-// TODO: implement
 template <typename Data>
-HashTableClsAdr<Data>::HashTableClsAdr(const TraversableContainer<Data> &con) {
-  std::cout << "costruttore" << std::endl;
+HashTableClsAdr<Data>::HashTableClsAdr(const TraversableContainer<Data> &con)
+    : HashTableClsAdr<Data>::HashTableClsAdr(con.Size()) {
+  con.Traverse([this](const Data &currData) { Insert(currData); });
 }
 
-// TODO: implement
-template <typename Data>
-HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize,
-                                       const TraversableContainer<Data> &con) {
-  std::cout << "costruttore" << std::endl;
-}
-
-// TODO: implement
-template <typename Data>
-HashTableClsAdr<Data>::HashTableClsAdr(MappableContainer<Data> &&con) {
-  std::cout << "costruttore" << std::endl;
-}
-
-// TODO: implement
 template <typename Data>
 HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize,
-                                       MappableContainer<Data> &&con) {
-  std::cout << "costruttore" << std::endl;
+                                       const TraversableContainer<Data> &con)
+    : HashTableClsAdr<Data>::HashTableClsAdr(newsize) {
+  con.Traverse([this](const Data &currData) { Insert(currData); });
 }
 
-// TODO: implement
 template <typename Data>
-HashTableClsAdr<Data>::HashTableClsAdr(const HashTableClsAdr &other) {
-  std::cout << "costruttore" << std::endl;
+HashTableClsAdr<Data>::HashTableClsAdr(MappableContainer<Data> &&con)
+    : HashTableClsAdr<Data>::HashTableClsAdr(con.Size()) {
+  con.Map([this](Data &currData) { Insert(currData); });
 }
 
-// TODO: implement
 template <typename Data>
-HashTableClsAdr<Data>::HashTableClsAdr(HashTableClsAdr &&other) noexcept {
-  std::cout << "costruttore" << std::endl;
+HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize,
+                                       MappableContainer<Data> &&con)
+    : HashTableClsAdr<Data>::HashTableClsAdr(newsize) {
+  con.Map([this](Data &currData) { Insert(currData); });
+}
+
+template <typename Data>
+HashTableClsAdr<Data>::HashTableClsAdr(const HashTableClsAdr &other)
+    : HashTable<Data>::HashTable(other) {
+  table = other.table;
+}
+
+template <typename Data>
+HashTableClsAdr<Data>::HashTableClsAdr(HashTableClsAdr &&other) noexcept
+    : HashTable<Data>::HashTable(std::move(other)) {
+  std::swap(table, other.table);
 }
 
 // Operators
 
-// TODO: implement
 template <typename Data>
 HashTableClsAdr<Data> &HashTableClsAdr<Data>::operator=(const HashTableClsAdr &other) {
-  std::cout << "operatore" << std::endl;
+  HashTableClsAdr<Data> temp{other};
+  std::swap(temp, *this);
+  return *this;
 }
 
-// TODO: implement
 template <typename Data>
 HashTableClsAdr<Data> &
 HashTableClsAdr<Data>::operator=(HashTableClsAdr &&other) noexcept {
-  std::cout << "operatore" << std::endl;
+  HashTable<Data>::operator=(std::move(other));
+  std::swap(table, other.table);
+  return *this;
 }
 
-// TODO: implement
 template <typename Data>
 bool HashTableClsAdr<Data>::operator==(const HashTableClsAdr &other) const noexcept {
-  std::cout << "operatore" << std::endl;
+  if (size != other.size) {
+    return false;
+  }
+
+  bool found = true;
+
+  for (unsigned long i = 0; i < tablesize && found; i++) {
+    table[i].Traverse(
+        [&found, &other](const Data &currData) { found &= other.Exists(currData); });
+  }
+
+  return found;
 }
 
-// TODO: implement
 template <typename Data>
 inline bool
 HashTableClsAdr<Data>::operator!=(const HashTableClsAdr &other) const noexcept {
@@ -79,41 +92,63 @@ HashTableClsAdr<Data>::operator!=(const HashTableClsAdr &other) const noexcept {
 
 // Specific member functions (inherited from DictionaryContainer)
 
-// TODO: implement
 template <typename Data> bool HashTableClsAdr<Data>::Insert(const Data &dat) {
-  std::cout << "insert" << std::endl;
+  unsigned long index = HashKey(dat);
+  if (table[index].Insert(dat)) {
+    size++;
+    return true;
+  }
+  return false;
 }
 
-// TODO: implement
 template <typename Data> bool HashTableClsAdr<Data>::Insert(Data &&dat) {
-  std::cout << "insert" << std::endl;
+  unsigned long index = HashKey(dat);
+  if (table[index].Insert(std::move(dat))) {
+    size++;
+    return true;
+  }
+  return false;
 }
 
-// TODO: implement
 template <typename Data> bool HashTableClsAdr<Data>::Remove(const Data &dat) {
-  std::cout << "remove" << std::endl;
+  unsigned long index = HashKey(dat);
+  if (table[index].Remove(dat)) {
+    size--;
+    return true;
+  }
+  return false;
 }
 
 // Specific member functions (inherited from TestableContainer)
 
-// TODO: implement
 template <typename Data>
 bool HashTableClsAdr<Data>::Exists(const Data &dat) const noexcept {
-  std::cout << "exists" << std::endl;
+  unsigned long index = HashKey(dat);
+  return table[index].Exists(dat);
 }
 
 // Specific member functions (inherited from ResizableContainer)
 
-// TODO: implement
 template <typename Data> void HashTableClsAdr<Data>::Resize(unsigned long newSize) {
-  std::cout << "resize" << std::endl;
+  if (newSize == size) {
+    return;
+  }
+
+  HashTableClsAdr temp{newSize};
+
+  for (unsigned long i = 0; i < tablesize; i++) {
+    table[i].Traverse([&temp](const Data &currData) { temp.Insert(currData); });
+  }
+  std::swap(temp, *this);
 }
 
 // Specific member function (inherited from ClearableContainer)
 
-// TODO: implement
 template <typename Data> void HashTableClsAdr<Data>::Clear() {
-  std::cout << "clear" << std::endl;
+  table.Clear();
+  size = 0;
+  tablesize = 128;
+  table.Resize(tablesize);
 }
 
 /* ************************************************************************** */

@@ -19,7 +19,7 @@ namespace lasd {
 template <typename Data> class Hashable {
 
 public:
-  unsigned long operator()(const Data &) const noexcept = 0;
+  virtual unsigned long operator()(const Data &) const noexcept = 0;
 };
 
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ protected:
 
   unsigned long acoeff = 1;
   unsigned long bcoeff = 0;
-  static const unsigned long power = 1073741824;
+  static const unsigned long power = 536870912;
 
   std::default_random_engine gen = std::default_random_engine(std::random_device{}());
   std::uniform_int_distribution<unsigned long> dista =
@@ -48,7 +48,6 @@ protected:
 
   unsigned long tablesize = 128;
 
-public:
   // Destructor
   virtual ~HashTable() = default;
 
@@ -68,15 +67,16 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  HashTable &operator=(const HashTable &) = delete;
+  HashTable &operator=(const HashTable &);
   // Copy assignment of abstract types should not be possible.
 
   // Move assignment
-  HashTable &operator=(HashTable &&) noexcept = delete;
+  HashTable &operator=(HashTable &&) noexcept;
   // Move assignment of abstract types should not be possible.
 
   /* ************************************************************************ */
 
+public:
   // Comparison operators
   bool operator==(const HashTable &) const noexcept = delete;
   // Comparison of abstract hashtable is possible but not required.

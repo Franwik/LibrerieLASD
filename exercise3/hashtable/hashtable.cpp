@@ -10,12 +10,12 @@ namespace lasd {
 
 template <> class Hashable<int> {
 public:
-  unsigned long operator()(const int &dat) { return (dat * dat); }
+  unsigned long operator()(const int &dat) const noexcept { return (dat * dat); }
 };
 
 template <> class Hashable<double> {
 public:
-  unsigned long operator()(const double &dat) {
+  unsigned long operator()(const double &dat) const noexcept {
     long integer = floor(dat);
     long fractional = pow(2, 24) * (dat - integer);
     return (integer * fractional);
@@ -24,7 +24,7 @@ public:
 
 template <> class Hashable<std::string> {
 public:
-  unsigned long operator()(const std::string &dat) {
+  unsigned long operator()(const std::string &dat) const noexcept {
     unsigned long hash = 5381;
     for (unsigned long i = 0; i < dat.length(); i++) {
       hash = (hash << 5) + dat[i];
@@ -41,8 +41,8 @@ public:
 // Constructors
 
 template <typename Data> HashTable<Data>::HashTable() {
-  acoeff = dista(gen);
-  bcoeff = distb(gen);
+  acoeff = dista(gen) * 2 + 1;
+  bcoeff = distb(gen) * 2 + 1;
 }
 
 template <typename Data> HashTable<Data>::HashTable(const HashTable &other) {
@@ -59,6 +59,24 @@ template <typename Data> HashTable<Data>::HashTable(HashTable &&other) noexcept 
   std::swap(tablesize, other.tablesize);
 }
 
+// Operators
+
+template <typename Data> HashTable<Data> &HashTable<Data>::operator=(const HashTable &other) {
+  size = other.size;
+  acoeff = other.acoeff;
+  bcoeff = other.bcoeff;
+  tablesize = other.tablesize;
+  return *this;
+}
+
+template <typename Data> HashTable<Data> &HashTable<Data>::operator=(HashTable &&other) noexcept {
+  std::swap(size, other.size);
+  std::swap(acoeff, other.acoeff);
+  std::swap(bcoeff, other.bcoeff);
+  std::swap(tablesize, other.tablesize);
+  return *this;
+}
+
 // Auxiliary member functions
 
 template <typename Data>
@@ -68,7 +86,7 @@ unsigned long HashTable<Data>::HashKey(const Data &dat) const noexcept {
 
 template <typename Data>
 unsigned long HashTable<Data>::HashKey(unsigned long key) const noexcept {
-  return ((acoeff * 2 + 1) * key + (bcoeff * 2 + 1)) % tablesize;
+  return (acoeff * key + bcoeff) % tablesize;
 }
 
 /* ************************************************************************** */

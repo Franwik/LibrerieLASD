@@ -21,6 +21,7 @@ private:
 protected:
   using Container::size;
   using HashTable<Data>::tablesize;
+  using HashTable<Data>::HashKey;
 
   Vector<List<Data>> table{tablesize};
 
