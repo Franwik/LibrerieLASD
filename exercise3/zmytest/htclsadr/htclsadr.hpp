@@ -2,7 +2,7 @@
 #define __HTCLSADR_H__
 
 namespace mytest {
-void my_ht_closed_addressing_test(unsigned int &, unsigned int &);
+void my_htclsadr_test(unsigned int &, unsigned int &);
 }
 
 #endif

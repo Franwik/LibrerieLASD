@@ -4,8 +4,8 @@
 
 /* ************************************************************************** */
 
-// #include "clsadr/htclsadr.hpp"
-// #include "opnadr/htopnadr.hpp"
+#include "htclsadr/htclsadr.hpp"
+#include "htopnadr/htopnadr.hpp"
 
 namespace mytest {
 
@@ -23,8 +23,8 @@ void run(TestFun);
 
 // Add Test To Run Here
 void runTests() {
-  // run(my_ht_closed_addressing_test);
-  // run(my_ht_open_addressing_test);
+  run(my_htclsadr_test);
+  run(my_htopnadr_test);
 }
 
 void run(TestFun test) {

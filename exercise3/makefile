@@ -66,8 +66,8 @@ exc3s.o: $(libexc3) zlasdtest/exercise3/simpletest.cpp
 exc3f.o: $(libexc3) zlasdtest/exercise3/fulltest.cpp
 	$(cc) $(cflags) -c zlasdtest/exercise3/fulltest.cpp -o exc3f.o
 
-myclsadr.o: $(libexc1b) zmytest/hashtable/clsadr/htclsadr.hpp zmytest/hashtable/clsadr/htclsadr.cpp
-	$(cc) $(cflags) -c zmytest/hashtable/clsadr/htclsadr.cpp -o myclsadr.o
+myclsadr.o: $(libexc1b) zmytest/htclsadr/htclsadr.hpp zmytest/htclsadr/htclsadr.cpp
+	$(cc) $(cflags) -c zmytest/htclsadr/htclsadr.cpp -o myclsadr.o
 
-myopnadr.o: $(libexc1b) zmytest/hashtable/opnadr/htopnadr.hpp zmytest/hashtable/opnadr/htopnadr.cpp
-	$(cc) $(cflags) -c zmytest/hashtable/opnadr/htopnadr.cpp -o myopnadr.o
+myopnadr.o: $(libexc1b) zmytest/htopnadr/htopnadr.hpp zmytest/htopnadr/htopnadr.cpp
+	$(cc) $(cflags) -c zmytest/htopnadr/htopnadr.cpp -o myopnadr.o
