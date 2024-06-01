@@ -134,7 +134,13 @@ template <typename Data> void HashTableClsAdr<Data>::Resize(unsigned long newSiz
     return;
   }
 
-  HashTableClsAdr temp{newSize};
+  unsigned long newtsize{128};
+
+  while (newSize > newtsize) {
+    newtsize *= 2;
+  }
+
+  HashTableClsAdr temp{newtsize};
 
   for (unsigned long i = 0; i < tablesize; i++) {
     table[i].Traverse([&temp](const Data &currData) { temp.Insert(currData); });

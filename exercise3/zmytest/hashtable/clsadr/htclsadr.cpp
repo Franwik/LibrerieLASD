@@ -39,9 +39,7 @@ void my_ht_closed_addressing(unsigned int &testnum, unsigned int &testerr) {
   unsigned int loctesterr{0};
   cout << endl << "Begin of My Hash Table Closed Addressing Test:" << endl;
   try {
-
-    // TODO: add tests
-
+    
   } catch (...) {
     loctestnum++;
     loctesterr++;

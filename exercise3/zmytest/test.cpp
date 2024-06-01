@@ -4,6 +4,9 @@
 
 /* ************************************************************************** */
 
+// #include "clsadr/htclsadr.hpp"
+// #include "opnadr/htopnadr.hpp"
+
 namespace mytest {
 
 using namespace std;
@@ -20,8 +23,8 @@ void run(TestFun);
 
 // Add Test To Run Here
 void runTests() {
-  // TODO: run tests
-  // run(my_binarytree_test);
+  // run(my_ht_closed_addressing_test);
+  // run(my_ht_open_addressing_test);
 }
 
 void run(TestFun test) {

@@ -40,7 +40,19 @@ void my_ht_open_addressing(unsigned int &testnum, unsigned int &testerr) {
   cout << endl << "Begin of My Hash Table Open Addressing Test:" << endl;
   try {
 
-    // TODO: add tests
+    lasd::HashTableOpnAdr<int> ht1;
+    // Empty(loctestnum, loctesterr, ht1, true);
+    // Size(loctestnum, loctesterr, ht1, true, 0);
+
+    // lasd::Vector<int> vec;
+
+    // for (int i; i < 200; i++) {
+    //   vec[i] = i;
+    // }
+
+    // lasd::HashTableOpnAdr<int> ht2(vec);
+    // Empty(loctestnum, loctesterr, ht1, false);
+    // Size(loctestnum, loctesterr, ht1, true, 200);
 
   } catch (...) {
     loctestnum++;
