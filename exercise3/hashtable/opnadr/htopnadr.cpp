@@ -95,7 +95,6 @@ HashTableOpnAdr<Data>::operator!=(const HashTableOpnAdr &other) const noexcept {
 // Specific member functions (inherited from DictionaryContainer)
 
 template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
-  std::cout << "sono entrato copy" << std::endl;
   if ((static_cast<double>(size) / tablesize) >= 0.66) {
     Resize(tablesize * 2);
   }
@@ -140,7 +139,6 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
 }
 
 template <typename Data> bool HashTableOpnAdr<Data>::Insert(Data &&dat) {
-  std::cout << "sono entrato move" << std::endl;
   if ((static_cast<double>(size) / tablesize) >= 0.66) {
     Resize(tablesize * 2);
   }
