@@ -12,15 +12,13 @@ template <typename Data> HashTableOpnAdr<Data>::HashTableOpnAdr(unsigned long ne
     tablesize *= 2;
   }
   table.Resize(tablesize);
-  flagTable.Resize(tablesize);
+  flagtable.Resize(tablesize);
 }
 
 template <typename Data>
 HashTableOpnAdr<Data>::HashTableOpnAdr(const TraversableContainer<Data> &con)
     : HashTableOpnAdr<Data>::HashTableOpnAdr(con.Size()) {
-  std::cout << "wow" << std::endl;
   con.Traverse([this](const Data &currData) { Insert(currData); });
-  std::cout << "finito" << std::endl;
 }
 
 template <typename Data>
@@ -33,28 +31,28 @@ HashTableOpnAdr<Data>::HashTableOpnAdr(unsigned long newsize,
 template <typename Data>
 HashTableOpnAdr<Data>::HashTableOpnAdr(MappableContainer<Data> &&con)
     : HashTableOpnAdr<Data>::HashTableOpnAdr(con.Size()) {
-  con.Map([this](Data &currData) { Insert(currData); });
+  con.Map([this](Data &currData) { Insert(std::move(currData)); });
 }
 
 template <typename Data>
 HashTableOpnAdr<Data>::HashTableOpnAdr(unsigned long newsize,
                                        MappableContainer<Data> &&con)
     : HashTableOpnAdr<Data>::HashTableOpnAdr(std::max(newsize, con.Size())) {
-  con.Map([this](Data &currData) { Insert(currData); });
+  con.Map([this](Data &currData) { Insert(std::move(currData)); });
 }
 
 template <typename Data>
 HashTableOpnAdr<Data>::HashTableOpnAdr(const HashTableOpnAdr &other)
     : HashTable<Data>::HashTable(other) {
   table = other.table;
-  flagTable = other.flagTable;
+  flagtable = other.flagtable;
 }
 
 template <typename Data>
 HashTableOpnAdr<Data>::HashTableOpnAdr(HashTableOpnAdr &&other) noexcept
     : HashTable<Data>::HashTable(std::move(other)) {
   std::swap(table, other.table);
-  std::swap(flagTable, other.flagTable);
+  std::swap(flagtable, other.flagtable);
 }
 
 // Operators
@@ -71,7 +69,7 @@ HashTableOpnAdr<Data> &
 HashTableOpnAdr<Data>::operator=(HashTableOpnAdr &&other) noexcept {
   HashTable<Data>::operator=(std::move(other));
   std::swap(table, other.table);
-  std::swap(flagTable, other.flagTable);
+  std::swap(flagtable, other.flagtable);
   return *this;
 }
 
@@ -97,6 +95,7 @@ HashTableOpnAdr<Data>::operator!=(const HashTableOpnAdr &other) const noexcept {
 // Specific member functions (inherited from DictionaryContainer)
 
 template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
+  std::cout << "sono entrato copy" << std::endl;
   if ((static_cast<double>(size) / tablesize) >= 0.66) {
     Resize(tablesize * 2);
   }
@@ -108,15 +107,15 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
 
   for (i = 0; i < tablesize; i++) {
     current = HashKey(dat, i);
-    if (flagTable[current] == FULL && table[current] == dat) {
+    if (flagtable[current] == FULL && table[current] == dat) {
       return false;
     }
-    if (flagTable[current] == EMPTY || flagTable[current] == DELETED) {
+    if (flagtable[current] == EMPTY || flagtable[current] == DELETED) {
       table[current] = dat;
-      if (flagTable[current] == DELETED) {
+      if (flagtable[current] == DELETED) {
         wasDeleted = true;
       }
-      flagTable[current] = FULL;
+      flagtable[current] = FULL;
       inserted = true;
       size++;
       break;
@@ -126,10 +125,10 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
   if (inserted && wasDeleted) {
     i++;
     unsigned long next{HashKey(dat, i)};
-    for (; i < tablesize && (flagTable[next] != EMPTY); i++) {
+    for (; i < tablesize && (flagtable[next] != EMPTY); i++) {
       next = HashKey(dat, i);
-      if (flagTable[next] == FULL && table[next] == dat) {
-        flagTable[next] = DELETED;
+      if (flagtable[next] == FULL && table[next] == dat) {
+        flagtable[next] = DELETED;
         size--;
         return false;
       }
@@ -141,6 +140,7 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(const Data &dat) {
 }
 
 template <typename Data> bool HashTableOpnAdr<Data>::Insert(Data &&dat) {
+  std::cout << "sono entrato move" << std::endl;
   if ((static_cast<double>(size) / tablesize) >= 0.66) {
     Resize(tablesize * 2);
   }
@@ -152,15 +152,15 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(Data &&dat) {
 
   for (i = 0; i < tablesize; i++) {
     current = HashKey(dat, i);
-    if (flagTable[current] == FULL && table[current] == dat) {
+    if (flagtable[current] == FULL && table[current] == dat) {
       return false;
     }
-    if (flagTable[current] == EMPTY || flagTable[current] == DELETED) {
+    if (flagtable[current] == EMPTY || flagtable[current] == DELETED) {
       table[current] = std::move(dat);
-      if (flagTable[current] == DELETED) {
+      if (flagtable[current] == DELETED) {
         wasDeleted = true;
       }
-      flagTable[current] = FULL;
+      flagtable[current] = FULL;
       inserted = true;
       size++;
       break;
@@ -170,10 +170,10 @@ template <typename Data> bool HashTableOpnAdr<Data>::Insert(Data &&dat) {
   if (inserted && wasDeleted) {
     i++;
     unsigned long next{HashKey(table[current], i)};
-    for (; i < tablesize && (flagTable[next] != EMPTY); i++) {
+    for (; i < tablesize && (flagtable[next] != EMPTY); i++) {
       next = HashKey(table[current], i);
-      if (flagTable[next] == FULL && table[next] == table[current]) {
-        flagTable[next] = DELETED;
+      if (flagtable[next] == FULL && table[next] == table[current]) {
+        flagtable[next] = DELETED;
         size--;
         return false;
       }
@@ -189,7 +189,7 @@ template <typename Data> bool HashTableOpnAdr<Data>::Remove(const Data &dat) {
   if (index == tablesize) {
     return false;
   }
-  flagTable[index] = DELETED;
+  flagtable[index] = DELETED;
   size--;
 
   if ((static_cast<double>(size) / tablesize) <= 0.25) {
@@ -212,21 +212,21 @@ bool HashTableOpnAdr<Data>::Exists(const Data &dat) const noexcept {
 
 // Specific member functions (inherited from ResizableContainer)
 
-template <typename Data> void HashTableOpnAdr<Data>::Resize(unsigned long newSize) {
-  if (newSize == size) {
+template <typename Data> void HashTableOpnAdr<Data>::Resize(unsigned long newsize) {
+  if (newsize == size) {
     return;
   }
 
   unsigned long newtsize{128};
 
-  while (newSize > newtsize) {
+  while (newsize > newtsize) {
     newtsize *= 2;
   }
 
   HashTableOpnAdr temp{newtsize};
 
   for (unsigned long i = 0; i < tablesize; i++) {
-    if (flagTable[i] == FULL) {
+    if (flagtable[i] == FULL) {
       temp.Insert(table[i]);
     }
   }
@@ -240,9 +240,9 @@ template <typename Data> void HashTableOpnAdr<Data>::Clear() {
   size = 0;
   tablesize = 128;
   table.Resize(tablesize);
-  flagTable.Resize(tablesize);
+  flagtable.Resize(tablesize);
   for (unsigned long i = 0; i < tablesize; i++) {
-    flagTable[i] = EMPTY;
+    flagtable[i] = EMPTY;
   }
 }
 
@@ -252,7 +252,7 @@ template <typename Data>
 bool HashTableOpnAdr<Data>::FindInto(const HashTableOpnAdr &a,
                                      const HashTableOpnAdr &b) const noexcept {
   for (unsigned long i = 0; i < a.tablesize; i++) {
-    if (a.flagTable[i] == FULL) {
+    if (a.flagtable[i] == FULL) {
       if (!b.Exists(a.table[i])) {
         return false;
       }
@@ -266,7 +266,7 @@ unsigned long HashTableOpnAdr<Data>::Find(const Data &dat) const noexcept {
   unsigned long current{};
   for (unsigned long i = 0; i < tablesize; i++) {
     current = HashKey(dat, i);
-    if (flagTable[current] == FULL && table[current] == dat) {
+    if (flagtable[current] == FULL && table[current] == dat) {
       return current;
     }
   }

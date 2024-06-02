@@ -29,14 +29,14 @@ HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize,
 template <typename Data>
 HashTableClsAdr<Data>::HashTableClsAdr(MappableContainer<Data> &&con)
     : HashTableClsAdr<Data>::HashTableClsAdr(con.Size()) {
-  con.Map([this](Data &currData) { Insert(currData); });
+  con.Map([this](Data &currData) { Insert(std::move((currData))); });
 }
 
 template <typename Data>
 HashTableClsAdr<Data>::HashTableClsAdr(unsigned long newsize,
                                        MappableContainer<Data> &&con)
     : HashTableClsAdr<Data>::HashTableClsAdr(newsize) {
-  con.Map([this](Data &currData) { Insert(currData); });
+  con.Map([this](Data &currData) { Insert(std::move(currData)); });
 }
 
 template <typename Data>
@@ -129,14 +129,14 @@ bool HashTableClsAdr<Data>::Exists(const Data &dat) const noexcept {
 
 // Specific member functions (inherited from ResizableContainer)
 
-template <typename Data> void HashTableClsAdr<Data>::Resize(unsigned long newSize) {
-  if (newSize == size) {
+template <typename Data> void HashTableClsAdr<Data>::Resize(unsigned long newsize) {
+  if (newsize == size) {
     return;
   }
 
   unsigned long newtsize{128};
 
-  while (newSize > newtsize) {
+  while (newsize > newtsize) {
     newtsize *= 2;
   }
 

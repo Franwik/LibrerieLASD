@@ -26,7 +26,7 @@ protected:
   enum Flag { EMPTY, FULL, DELETED };
 
   Vector<Data> table{tablesize};
-  Vector<Flag> flagTable{tablesize};
+  Vector<Flag> flagtable{tablesize};
 
 public:
   // Default constructor
