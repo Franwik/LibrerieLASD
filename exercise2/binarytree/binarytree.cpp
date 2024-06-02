@@ -783,15 +783,12 @@ BTBreadthIterator<Data>::BTBreadthIterator(const BinaryTree<Data> &tree) {
 
 template <typename Data>
 BTBreadthIterator<Data>::BTBreadthIterator(const BTBreadthIterator &other) {
-  std::clog << "wow!" << std::endl;
   queue = other.queue;
   root = other.root;
 }
 
 template <typename Data>
 BTBreadthIterator<Data>::BTBreadthIterator(BTBreadthIterator &&other) noexcept {
-  std::clog << "my q is empty? " << queue.Empty() << std::endl;
-  std::clog << "other q is empty? " << other.queue.Empty() << std::endl;
   std::swap(queue, other.queue);
   std::swap(root, other.root);
 }
@@ -801,7 +798,6 @@ BTBreadthIterator<Data>::BTBreadthIterator(BTBreadthIterator &&other) noexcept {
 template <typename Data>
 BTBreadthIterator<Data> &
 BTBreadthIterator<Data>::operator=(const BTBreadthIterator<Data> &other) {
-  std::clog << "equals(?)" << std::endl;
   BTBreadthIterator<Data> temp{other};
   std::swap(temp, *this);
   return *this;
@@ -810,7 +806,6 @@ BTBreadthIterator<Data>::operator=(const BTBreadthIterator<Data> &other) {
 template <typename Data>
 BTBreadthIterator<Data> &
 BTBreadthIterator<Data>::operator=(BTBreadthIterator<Data> &&other) {
-  std::clog << "equals(?)" << std::endl;
   std::swap(queue, other.queue);
   std::swap(root, other.root);
   return *this;
