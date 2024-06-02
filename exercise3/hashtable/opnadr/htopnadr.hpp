@@ -13,7 +13,8 @@ namespace lasd {
 
 /* ************************************************************************** */
 
-template <typename Data> class HashTableOpnAdr : virtual public HashTable<Data> {
+template <typename Data>
+class HashTableOpnAdr : virtual public HashTable<Data> {
 
 private:
   // ...
@@ -91,7 +92,7 @@ public:
 
   // Specific member functions (inherited from ResizableContainer)
 
-  void Resize(unsigned long);
+  void Resize(unsigned long) override;
 
   /* ************************************************************************ */
 
@@ -102,7 +103,8 @@ public:
 protected:
   // Auxiliary member functions
 
-  bool FindInto(const HashTableOpnAdr &, const HashTableOpnAdr &) const noexcept;
+  bool FindInto(const HashTableOpnAdr &,
+                const HashTableOpnAdr &) const noexcept;
 
   unsigned long Find(const Data &) const noexcept;
   unsigned long HashKey(const Data &, unsigned long) const noexcept;

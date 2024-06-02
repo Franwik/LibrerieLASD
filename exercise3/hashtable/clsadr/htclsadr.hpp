@@ -13,7 +13,8 @@ namespace lasd {
 
 /* ************************************************************************** */
 
-template <typename Data> class HashTableClsAdr : virtual public HashTable<Data> {
+template <typename Data>
+class HashTableClsAdr : virtual public HashTable<Data> {
 
 private:
   // ...
@@ -88,7 +89,7 @@ public:
 
   // Specific member functions (inherited from ResizableContainer)
 
-  void Resize(unsigned long);
+  void Resize(unsigned long) override;
 
   /* ************************************************************************ */
 

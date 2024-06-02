@@ -38,13 +38,14 @@ protected:
   unsigned long bcoeff = 0;
   static const unsigned long power = 536870912;
 
-  std::default_random_engine gen = std::default_random_engine(std::random_device{}());
+  std::default_random_engine gen =
+      std::default_random_engine(std::random_device{}());
   std::uniform_int_distribution<unsigned long> dista =
       std::uniform_int_distribution<unsigned long>(1, power - 1);
   std::uniform_int_distribution<unsigned long> distb =
       std::uniform_int_distribution<unsigned long>(0, power - 1);
 
-  static const Hashable<Data> enchash;
+  static const Hashable<Data> constexpr enchash{};
 
   unsigned long tablesize = 128;
 

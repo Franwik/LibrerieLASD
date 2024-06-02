@@ -68,7 +68,7 @@ BinaryTree<Data>::operator!=(const BinaryTree<Data> &other) const noexcept {
 
 template <typename Data>
 inline void BinaryTree<Data>::Traverse(TraverseFun func) const {
-  BreadthTraverse(func);
+  PreOrderTraverse(func);
 }
 
 template <typename Data>
