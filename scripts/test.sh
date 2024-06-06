@@ -5,7 +5,7 @@ start=3
 finish=3
 for i in $(seq $start $finish); do
   make -C exercise$i
-  exercise$i/main
+  exercise$i/main 3
   result=$?
   output="Test for ex$i terminated with $result error"
   if [ "$result" -ne 1 ]; then
