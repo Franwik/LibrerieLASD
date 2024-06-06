@@ -23,7 +23,6 @@ using namespace std;
 
 /* ************************************************************************** */
 
-// TODO: uncomment after HashTableImplementation
 void stestHashTableInt(lasd::HashTable<int> & ht, const lasd::LinearContainer<int> & con, uint & testnum, uint & testerr) {
   uint loctestnum = 0, loctesterr = 0;
   try {
